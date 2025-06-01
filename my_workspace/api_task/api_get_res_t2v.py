@@ -24,6 +24,7 @@ def is_windows():
 
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
 COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else  "http://127.0.0.1:8190"
+process_time = 136 if is_windows() else 255
 
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/comfy重要工作流/文字生视频_api.json"  # 你的工作流API格式文件
 OUTPUT_VIDEO_DIR = COMFYUI_PATH + "/output/bg_shots"
@@ -97,6 +98,6 @@ while True:
     print("-" * 30)
     if cont > mx_cont:
         break
-    time.sleep(136)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
+    time.sleep(process_time)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
 
 print("All videos processed.")
