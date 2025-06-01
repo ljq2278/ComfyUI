@@ -5,7 +5,7 @@ import os
 import random
 import traceback
 import requests
-from my_workspace.materials.bg_shots.bg_shots import mv_shots_no_protagonist
+from my_workspace.materials.bg_shots.bg_shots import campus_mv_shots
 import platform
 
 os.environ['http_proxy'] = ''
@@ -70,8 +70,8 @@ def set_workflow(current_workflow, **kwargs):
 with open(WORKFLOW_API_JSON_FILE, 'r', encoding="utf-8") as f:
     base_workflow = json.load(f)
 
-nm = mv_shots_no_protagonist["name"]
-shot_list = mv_shots_no_protagonist["content"]
+nm = campus_mv_shots["name"]
+shot_list = campus_mv_shots["content"]
 mv_shots = [(i, v) for i, v in enumerate(shot_list)]
 
 candi_shots = [
@@ -92,8 +92,9 @@ while True:
 
         mv_shot_cur = {}
         mv_shot_ind,  mv_shot_content = mv_shots[int(len(mv_shots)*random.random())]
-        if mv_shot_content["运镜"]["类型"]=="固定镜头":
+        if "固定" in mv_shot_content["运镜"]["类型"]:
             mv_shot_content["运镜"]["类型"] = candi_shots[int(random.random()*len(candi_shots))]
+            mv_shot_content["运镜"]["移动变化"] = "有"
         mv_shot_cur.update(mv_shot_content)
         mv_shot_cur.update({"风格": "Studio Ghibli style"})
         kwargs.update({"prompt": mv_shot_cur, "mv_shot_ind": mv_shot_ind})
