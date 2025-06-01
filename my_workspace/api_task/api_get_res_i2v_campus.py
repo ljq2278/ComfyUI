@@ -28,7 +28,7 @@ def is_windows():
 
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
 COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:8190"
-process_time = 34 if  is_windows() else 60
+process_time = 80 if  is_windows() else 120
 
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + \
     "/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
@@ -98,7 +98,7 @@ for it_cnt in range(0, iter_tt):
             current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
             kwargs = {
                 "ref_img": INPUT_IMAGE_PATH,
-                "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"res_{f}"),
+                "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"res_{file_name_prefix}"),
                 "prompt": f"{prompt_dct}"
             }
             current_workflow = set_workflow(current_workflow, **kwargs)
