@@ -1,33 +1,9 @@
 {
   "id": "96995b8f-85c5-47af-b3cf-7b6a24675694",
   "revision": 0,
-  "last_node_id": 162,
-  "last_link_id": 298,
+  "last_node_id": 163,
+  "last_link_id": 302,
   "nodes": [
-    {
-      "id": 111,
-      "type": "MarkdownNote",
-      "pos": [
-        -320,
-        -200
-      ],
-      "size": [
-        420,
-        150
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "About CausVid LoRA",
-      "properties": {},
-      "widgets_values": [
-        "You may need to test different LoRA strength to get the best results. Test within the range of 0.3 to 1. \nWhen we were testing the workflow, we found that sometimes there are relatively obvious artifacts when the intensity is around 0.5. The effect is sometimes quite good when it's above 0.7. When the value is too high, it will be overly saturated.  \n\n---\n\n\n你可能需要测试不同的 LoRA 强度来获取最好的结果，0.3～1 之间进行测试，我们在测试工作流时发现，有时候 0.5 左右会有比较明显的伪影，0.7 后效果有时还不错，但数值过高时会过于饱和。\n"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
     {
       "id": 120,
       "type": "MarkdownNote",
@@ -40,7 +16,7 @@
         220
       ],
       "flags": {},
-      "order": 1,
+      "order": 0,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -66,7 +42,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 37,
+      "order": 38,
       "mode": 0,
       "inputs": [
         {
@@ -99,128 +75,6 @@
       "widgets_values": []
     },
     {
-      "id": 69,
-      "type": "SaveVideo",
-      "pos": [
-        1340,
-        70
-      ],
-      "size": [
-        676.23095703125,
-        774.23095703125
-      ],
-      "flags": {},
-      "order": 40,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "video",
-          "type": "VIDEO",
-          "link": 129
-        }
-      ],
-      "outputs": [],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "SaveVideo"
-      },
-      "widgets_values": [
-        "video/ComfyUI",
-        "auto",
-        "auto"
-      ]
-    },
-    {
-      "id": 114,
-      "type": "VAELoader",
-      "pos": [
-        -290,
-        540
-      ],
-      "size": [
-        350,
-        58
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "slot_index": 0,
-          "links": [
-            185,
-            192
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "VAELoader",
-        "models": [
-          {
-            "name": "wan_2.1_vae.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
-            "directory": "vae"
-          }
-        ]
-      },
-      "widgets_values": [
-        "wan_2.1_vae.safetensors"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 127,
-      "type": "CLIPLoader",
-      "pos": [
-        -290,
-        390
-      ],
-      "size": [
-        350,
-        106
-      ],
-      "flags": {},
-      "order": 3,
-      "mode": 4,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 0,
-          "links": [
-            188
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "CLIPLoader",
-        "models": [
-          {
-            "name": "umt5_xxl_fp16.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors",
-            "directory": "text_encoders"
-          }
-        ]
-      },
-      "widgets_values": [
-        "umt5_xxl_fp16.safetensors",
-        "wan",
-        "default"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
       "id": 112,
       "type": "Note",
       "pos": [
@@ -232,7 +86,7 @@
         100
       ],
       "flags": {},
-      "order": 4,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -255,7 +109,7 @@
         780
       ],
       "flags": {},
-      "order": 39,
+      "order": 40,
       "mode": 4,
       "inputs": [
         {
@@ -292,7 +146,7 @@
       "flags": {
         "collapsed": true
       },
-      "order": 36,
+      "order": 37,
       "mode": 0,
       "inputs": [
         {
@@ -341,13 +195,13 @@
       "flags": {
         "collapsed": true
       },
-      "order": 25,
+      "order": 24,
       "mode": 0,
       "inputs": [
         {
           "name": "model",
           "type": "MODEL",
-          "link": 296
+          "link": 300
         }
       ],
       "outputs": [
@@ -381,7 +235,7 @@
         262
       ],
       "flags": {},
-      "order": 35,
+      "order": 36,
       "mode": 0,
       "inputs": [
         {
@@ -421,7 +275,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        960134856314319,
+        853567355687734,
         "randomize",
         4,
         1,
@@ -429,49 +283,6 @@
         "simple",
         1
       ]
-    },
-    {
-      "id": 107,
-      "type": "CLIPTextEncode",
-      "pos": [
-        120,
-        420
-      ],
-      "size": [
-        425.27801513671875,
-        180.6060791015625
-      ],
-      "flags": {},
-      "order": 27,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 298
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "slot_index": 0,
-          "links": [
-            184
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Negative Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 148,
@@ -485,7 +296,7 @@
         314
       ],
       "flags": {},
-      "order": 5,
+      "order": 2,
       "mode": 4,
       "inputs": [],
       "outputs": [
@@ -524,7 +335,7 @@
         106
       ],
       "flags": {},
-      "order": 20,
+      "order": 23,
       "mode": 4,
       "inputs": [
         {
@@ -560,8 +371,8 @@
       },
       "widgets_values": [
         0,
-        720,
-        720
+        768,
+        432
       ]
     },
     {
@@ -576,7 +387,7 @@
         30
       ],
       "flags": {},
-      "order": 24,
+      "order": 28,
       "mode": 4,
       "inputs": [
         {
@@ -613,7 +424,7 @@
         46
       ],
       "flags": {},
-      "order": 30,
+      "order": 31,
       "mode": 4,
       "inputs": [
         {
@@ -656,7 +467,7 @@
         60
       ],
       "flags": {},
-      "order": 33,
+      "order": 34,
       "mode": 4,
       "inputs": [
         {
@@ -695,7 +506,7 @@
         60
       ],
       "flags": {},
-      "order": 28,
+      "order": 29,
       "mode": 4,
       "inputs": [
         {
@@ -745,7 +556,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 23,
+      "order": 27,
       "mode": 4,
       "inputs": [
         {
@@ -782,7 +593,7 @@
         110
       ],
       "flags": {},
-      "order": 19,
+      "order": 22,
       "mode": 4,
       "inputs": [
         {
@@ -818,8 +629,8 @@
       },
       "widgets_values": [
         1,
-        720,
-        720
+        768,
+        432
       ]
     },
     {
@@ -834,7 +645,7 @@
         46
       ],
       "flags": {},
-      "order": 29,
+      "order": 30,
       "mode": 4,
       "inputs": [
         {
@@ -877,7 +688,7 @@
         110
       ],
       "flags": {},
-      "order": 6,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -901,7 +712,7 @@
         170
       ],
       "flags": {},
-      "order": 7,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -925,7 +736,7 @@
         270
       ],
       "flags": {},
-      "order": 32,
+      "order": 33,
       "mode": 4,
       "inputs": [
         {
@@ -954,7 +765,7 @@
         270
       ],
       "flags": {},
-      "order": 31,
+      "order": 32,
       "mode": 4,
       "inputs": [
         {
@@ -983,7 +794,7 @@
         270
       ],
       "flags": {},
-      "order": 8,
+      "order": 5,
       "mode": 0,
       "inputs": [],
       "outputs": [],
@@ -994,86 +805,6 @@
       ],
       "color": "#432",
       "bgcolor": "#653"
-    },
-    {
-      "id": 158,
-      "type": "PrimitiveNode",
-      "pos": [
-        70,
-        1130
-      ],
-      "size": [
-        280,
-        82
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "widget": {
-            "name": "width"
-          },
-          "links": [
-            285,
-            287,
-            289
-          ]
-        }
-      ],
-      "title": "Width",
-      "properties": {
-        "Run widget replace on values": false
-      },
-      "widgets_values": [
-        720,
-        "fixed"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 159,
-      "type": "PrimitiveNode",
-      "pos": [
-        70,
-        1260
-      ],
-      "size": [
-        280,
-        82
-      ],
-      "flags": {},
-      "order": 10,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "INT",
-          "type": "INT",
-          "widget": {
-            "name": "height"
-          },
-          "links": [
-            288,
-            290,
-            292
-          ]
-        }
-      ],
-      "title": "Height",
-      "properties": {
-        "Run widget replace on values": false
-      },
-      "widgets_values": [
-        720,
-        "fixed"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
     },
     {
       "id": 147,
@@ -1087,7 +818,7 @@
         82
       ],
       "flags": {},
-      "order": 11,
+      "order": 6,
       "mode": 4,
       "inputs": [],
       "outputs": [
@@ -1124,7 +855,7 @@
         90
       ],
       "flags": {},
-      "order": 12,
+      "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1163,7 +894,7 @@
       "flags": {
         "collapsed": false
       },
-      "order": 38,
+      "order": 39,
       "mode": 0,
       "inputs": [
         {
@@ -1197,18 +928,502 @@
       ]
     },
     {
+      "id": 162,
+      "type": "MarkdownNote",
+      "pos": [
+        -320,
+        1080
+      ],
+      "size": [
+        340,
+        280
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "Note",
+      "properties": {},
+      "widgets_values": [
+        "VACE does not use data with style reference for training. Currently, it only has the functions of object or background reference. Therefore, at \"Load reference image\", you should upload a image with a solid-colored background or a background image. At present, the WanVaceToVideo node only supports the input of a single reference_image image.\n\n---\n\nVACE 并没有使用风格参考的数据去训练，目前只有物体或背景参考的功能，所以在 Load reference image 这里你应该上传背景为纯色的图片，或者背景图，目前 WanVaceToVideo 节点只支持输入单个 reference_image 图片"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 121,
+      "type": "MarkdownNote",
+      "pos": [
+        -1200,
+        10
+      ],
+      "size": [
+        470,
+        800
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "[Tutorial](https://docs.comfy.org/tutorials/video/wan/vace) | [教程](https://docs.comfy.org/zh-CN/tutorials/video/wan/vace)\n\n[Causvid Lora extracted  by Kijai](https://www.reddit.com/r/StableDiffusion/comments/1knuafk/causvid_lora_massive_speedup_for_wan21_made_by/) Thanks to CausVid MIT\n\n##  14B Support 480P 720P\n\n**Diffusion Model**\n- [wan2.1_vace_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)\n\n**LoRA**\n- [Wan21_CausVid_14B_T2V_lora_rank32.safetensors](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan21_CausVid_14B_T2V_lora_rank32.safetensors)\n\nIt takes about 40 minutes to complete at 81 frames 720P resolution with the RTX 4090 .  \nAfter using Wan21_CausVid_14B_T2V_lora_rank32.safetensors, it only takes about 4 minutes.\n\n## 1.3B Support 480P only\n\n**Diffusion Model**\n- [wan2.1_vace_1.3B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)\n\n**LoRA**\n- [Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors)\n \n\n## Other Models\n\n* You may already have these models if you use Wan workflow before.\n\n**VAE**\n- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)\n\n**Text encoders**   Chose one of following model\n- [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)\n- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true)\n\n> You can choose between fp16 of fp8; I used fp16 to match what kijai's wrapper is compatible with.\n\nFile save location\n\n```\nComfyUI/\n├── models/\n│   ├── diffusion_models/\n│   │   ├-── wan2.1_vace_14B_fp16.safetensors\n│   │   └─── wan2.1_vace_1.3B_fp16.safetensors \n│   ├── text_encoders/\n│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors # or fp16\n│   ├── loras/\n│   │   ├── Wan21_CausVid_14B_T2V_lora_rank32.safetensors\n│   │   └── Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors\n│   └── vae/\n│       └──  wan_2.1_vae.safetensors\n```\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 125,
+      "type": "LoraLoader",
+      "pos": [
+        -703.3502197265625,
+        176.70071411132812
+      ],
+      "size": [
+        350,
+        126
+      ],
+      "flags": {},
+      "order": 20,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 195
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 295
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": []
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "LoraLoader",
+        "models": [
+          {
+            "name": "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
+            "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
+        0.7000000000000002,
+        1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 126,
+      "type": "CLIPLoader",
+      "pos": [
+        -709.999755859375,
+        364.4669494628906
+      ],
+      "size": [
+        370,
+        106
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 0,
+          "links": [
+            295
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "CLIPLoader",
+        "models": [
+          {
+            "name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true",
+            "directory": "text_encoders"
+          }
+        ]
+      },
+      "widgets_values": [
+        "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+        "wan",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 114,
+      "type": "VAELoader",
+      "pos": [
+        -293.0457763671875,
+        508.5269775390625
+      ],
+      "size": [
+        350,
+        58
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "slot_index": 0,
+          "links": [
+            185,
+            192
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "VAELoader",
+        "models": [
+          {
+            "name": "wan_2.1_vae.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors",
+            "directory": "vae"
+          }
+        ]
+      },
+      "widgets_values": [
+        "wan_2.1_vae.safetensors"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 124,
+      "type": "UNETLoader",
+      "pos": [
+        -702.2333374023438,
+        63.40138244628906
+      ],
+      "size": [
+        350,
+        82
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 4,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            195
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "wan2.1_vace_1.3B_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "wan2.1_vace_1.3B_fp16.safetensors",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 113,
+      "type": "UNETLoader",
+      "pos": [
+        -284.9237060546875,
+        41.11517333984375
+      ],
+      "size": [
+        350,
+        82
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": []
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "UNETLoader",
+        "models": [
+          {
+            "name": "wan2.1_vace_14B_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors",
+            "directory": "diffusion_models"
+          }
+        ]
+      },
+      "widgets_values": [
+        "wan2.1_vace_14B_fp16.safetensors",
+        "default"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 163,
+      "type": "UnetLoaderGGUF",
+      "pos": [
+        -262.33917236328125,
+        -79.49649047851562
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            299
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-gguf",
+        "ver": "1.1.0",
+        "Node name for S&R": "UnetLoaderGGUF"
+      },
+      "widgets_values": [
+        "Wan2.1-VACE-14B-Q4_K_M.gguf"
+      ]
+    },
+    {
+      "id": 115,
+      "type": "LoraLoader",
+      "pos": [
+        -286.9542236328125,
+        169.23715209960938
+      ],
+      "size": [
+        350,
+        126
+      ],
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 299
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 188
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            300
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            301,
+            302
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "LoraLoader",
+        "models": [
+          {
+            "name": "Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
+            "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
+            "directory": "loras"
+          }
+        ]
+      },
+      "widgets_values": [
+        "Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
+        0.7000000000000002,
+        1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 73,
+      "type": "LoadImage",
+      "pos": [
+        -290,
+        690
+      ],
+      "size": [
+        274.080078125,
+        314.00006103515625
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            202
+          ]
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "09b768b0-bcf0-415d-a3ad-d4806ee48787.png",
+        "image"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 105,
+      "type": "CLIPTextEncode",
+      "pos": [
+        120,
+        210
+      ],
+      "size": [
+        422.84503173828125,
+        164.31304931640625
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 301
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "slot_index": 0,
+          "links": [
+            183
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "{'风格': '现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。', '少女': '蓝色眼睛，黄色长发，白皮肤，抽褶设计紧身连衣裙', '场景': {'场景': '操场看台，坐满了观看比赛的同学', '背景人群数量': '很多'}, '拍摄角度': '平视', '镜头距离': '半身', '运镜': '缓慢拉远，焦点从少女的侧脸和蓝眼睛，逐渐拉远到她所在的整个环境（如图书馆一角）。', '人物位置': '画面中心，半身，逐渐融入背景', '动作': '坐在图书馆靠窗的位置，阳光照在她身上，她抬头望向窗外，眼神中带着一丝迷茫或思考。', '表情': '沉思，略带迷茫', '镜头含义': '在知识的海洋中寻找答案，对外界的探索欲。'}"
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 111,
+      "type": "MarkdownNote",
+      "pos": [
+        113.51433563232422,
+        -192.8931884765625
+      ],
+      "size": [
+        420,
+        150
+      ],
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "title": "About CausVid LoRA",
+      "properties": {},
+      "widgets_values": [
+        "You may need to test different LoRA strength to get the best results. Test within the range of 0.3 to 1. \nWhen we were testing the workflow, we found that sometimes there are relatively obvious artifacts when the intensity is around 0.5. The effect is sometimes quite good when it's above 0.7. When the value is too high, it will be overly saturated.  \n\n---\n\n\n你可能需要测试不同的 LoRA 强度来获取最好的结果，0.3～1 之间进行测试，我们在测试工作流时发现，有时候 0.5 左右会有比较明显的伪影，0.7 后效果有时还不错，但数值过高时会过于饱和。\n"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
       "id": 109,
       "type": "WanVaceToVideo",
       "pos": [
-        620,
-        110
+        612.8931884765625,
+        102.89320373535156
       ],
       "size": [
         315,
         254
       ],
       "flags": {},
-      "order": 34,
+      "order": 35,
       "mode": 0,
       "inputs": [
         {
@@ -1305,212 +1520,22 @@
         "Node name for S&R": "WanVaceToVideo"
       },
       "widgets_values": [
-        720,
-        720,
+        768,
+        432,
         9,
         1,
         0.5000000000000001
       ]
     },
     {
-      "id": 162,
-      "type": "MarkdownNote",
-      "pos": [
-        -320,
-        1080
-      ],
-      "size": [
-        340,
-        280
-      ],
-      "flags": {},
-      "order": 13,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "title": "Note",
-      "properties": {},
-      "widgets_values": [
-        "VACE does not use data with style reference for training. Currently, it only has the functions of object or background reference. Therefore, at \"Load reference image\", you should upload a image with a solid-colored background or a background image. At present, the WanVaceToVideo node only supports the input of a single reference_image image.\n\n---\n\nVACE 并没有使用风格参考的数据去训练，目前只有物体或背景参考的功能，所以在 Load reference image 这里你应该上传背景为纯色的图片，或者背景图，目前 WanVaceToVideo 节点只支持输入单个 reference_image 图片"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 121,
-      "type": "MarkdownNote",
-      "pos": [
-        -1200,
-        10
-      ],
-      "size": [
-        470,
-        800
-      ],
-      "flags": {},
-      "order": 14,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "[Tutorial](https://docs.comfy.org/tutorials/video/wan/vace) | [教程](https://docs.comfy.org/zh-CN/tutorials/video/wan/vace)\n\n[Causvid Lora extracted  by Kijai](https://www.reddit.com/r/StableDiffusion/comments/1knuafk/causvid_lora_massive_speedup_for_wan21_made_by/) Thanks to CausVid MIT\n\n##  14B Support 480P 720P\n\n**Diffusion Model**\n- [wan2.1_vace_14B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)\n\n**LoRA**\n- [Wan21_CausVid_14B_T2V_lora_rank32.safetensors](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan21_CausVid_14B_T2V_lora_rank32.safetensors)\n\nIt takes about 40 minutes to complete at 81 frames 720P resolution with the RTX 4090 .  \nAfter using Wan21_CausVid_14B_T2V_lora_rank32.safetensors, it only takes about 4 minutes.\n\n## 1.3B Support 480P only\n\n**Diffusion Model**\n- [wan2.1_vace_1.3B_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors)\n\n**LoRA**\n- [Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors](https://huggingface.co/Kijai/WanVideo_comfy/blob/main/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors)\n \n\n## Other Models\n\n* You may already have these models if you use Wan workflow before.\n\n**VAE**\n- [wan_2.1_vae.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/vae/wan_2.1_vae.safetensors?download=true)\n\n**Text encoders**   Chose one of following model\n- [umt5_xxl_fp16.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors?download=true)\n- [umt5_xxl_fp8_e4m3fn_scaled.safetensors](https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true)\n\n> You can choose between fp16 of fp8; I used fp16 to match what kijai's wrapper is compatible with.\n\nFile save location\n\n```\nComfyUI/\n├── models/\n│   ├── diffusion_models/\n│   │   ├-── wan2.1_vace_14B_fp16.safetensors\n│   │   └─── wan2.1_vace_1.3B_fp16.safetensors \n│   ├── text_encoders/\n│   │   └─── umt5_xxl_fp8_e4m3fn_scaled.safetensors # or fp16\n│   ├── loras/\n│   │   ├── Wan21_CausVid_14B_T2V_lora_rank32.safetensors\n│   │   └── Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors\n│   └── vae/\n│       └──  wan_2.1_vae.safetensors\n```\n"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
-    },
-    {
-      "id": 73,
-      "type": "LoadImage",
-      "pos": [
-        -290,
-        690
-      ],
-      "size": [
-        274.080078125,
-        314.00006103515625
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "links": [
-            202
-          ]
-        },
-        {
-          "name": "MASK",
-          "type": "MASK",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "LoadImage"
-      },
-      "widgets_values": [
-        "jimeng-2025-05-25-58-镜头微微下移，沙滩边缘出现，一波海浪刚退去，留下湿润的痕迹。动画风格.jpeg",
-        "image"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 115,
-      "type": "LoraLoader",
-      "pos": [
-        -290,
-        220
-      ],
-      "size": [
-        350,
-        126
-      ],
-      "flags": {},
-      "order": 21,
-      "mode": 4,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 187
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 188
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": []
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": []
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "LoraLoader",
-        "models": [
-          {
-            "name": "Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
-            "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
-            "directory": "loras"
-          }
-        ]
-      },
-      "widgets_values": [
-        "Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
-        0.7000000000000002,
-        1
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 113,
-      "type": "UNETLoader",
-      "pos": [
-        -290,
-        100
-      ],
-      "size": [
-        350,
-        82
-      ],
-      "flags": {},
-      "order": 16,
-      "mode": 4,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            187
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "UNETLoader",
-        "models": [
-          {
-            "name": "wan2.1_vace_14B_fp16.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_14B_fp16.safetensors",
-            "directory": "diffusion_models"
-          }
-        ]
-      },
-      "widgets_values": [
-        "wan2.1_vace_14B_fp16.safetensors",
-        "default"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 126,
+      "id": 127,
       "type": "CLIPLoader",
       "pos": [
-        -709.999755859375,
-        364.4669494628906
+        -293.0457763671875,
+        358.5271301269531
       ],
       "size": [
-        370,
+        350,
         106
       ],
       "flags": {},
@@ -1523,7 +1548,7 @@
           "type": "CLIP",
           "slot_index": 0,
           "links": [
-            295
+            188
           ]
         }
       ],
@@ -1533,14 +1558,14 @@
         "Node name for S&R": "CLIPLoader",
         "models": [
           {
-            "name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp8_e4m3fn_scaled.safetensors?download=true",
+            "name": "umt5_xxl_fp16.safetensors",
+            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/text_encoders/umt5_xxl_fp16.safetensors",
             "directory": "text_encoders"
           }
         ]
       },
       "widgets_values": [
-        "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+        "umt5_xxl_fp16.safetensors",
         "wan",
         "default"
       ],
@@ -1548,122 +1573,15 @@
       "bgcolor": "#533"
     },
     {
-      "id": 125,
-      "type": "LoraLoader",
-      "pos": [
-        -703.3502197265625,
-        176.70071411132812
-      ],
-      "size": [
-        350,
-        126
-      ],
-      "flags": {},
-      "order": 22,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 195
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 295
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            296
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            297,
-            298
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "LoraLoader",
-        "models": [
-          {
-            "name": "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
-            "url": "https://huggingface.co/Kijai/WanVideo_comfy/resolve/main/Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
-            "directory": "loras"
-          }
-        ]
-      },
-      "widgets_values": [
-        "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
-        0.7000000000000002,
-        1
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 124,
-      "type": "UNETLoader",
-      "pos": [
-        -702.2333374023438,
-        63.40138244628906
-      ],
-      "size": [
-        350,
-        82
-      ],
-      "flags": {},
-      "order": 18,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            195
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.34",
-        "Node name for S&R": "UNETLoader",
-        "models": [
-          {
-            "name": "wan2.1_vace_1.3B_fp16.safetensors",
-            "url": "https://huggingface.co/Comfy-Org/Wan_2.1_ComfyUI_repackaged/resolve/main/split_files/diffusion_models/wan2.1_vace_1.3B_fp16.safetensors",
-            "directory": "diffusion_models"
-          }
-        ]
-      },
-      "widgets_values": [
-        "wan2.1_vace_1.3B_fp16.safetensors",
-        "default"
-      ],
-      "color": "#322",
-      "bgcolor": "#533"
-    },
-    {
-      "id": 105,
+      "id": 107,
       "type": "CLIPTextEncode",
       "pos": [
         120,
-        210
+        420
       ],
       "size": [
-        422.84503173828125,
-        164.31304931640625
+        425.27801513671875,
+        180.6060791015625
       ],
       "flags": {},
       "order": 26,
@@ -1672,7 +1590,7 @@
         {
           "name": "clip",
           "type": "CLIP",
-          "link": 297
+          "link": 302
         }
       ],
       "outputs": [
@@ -1681,21 +1599,134 @@
           "type": "CONDITIONING",
           "slot_index": 0,
           "links": [
-            183
+            184
           ]
         }
       ],
-      "title": "CLIP Text Encode (Positive Prompt)",
+      "title": "CLIP Text Encode (Negative Prompt)",
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.34",
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "阳光照在沙滩上，海鸥飞过，宁静的感觉"
+        "过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，倒着走,"
       ],
-      "color": "#232",
-      "bgcolor": "#353"
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 159,
+      "type": "PrimitiveNode",
+      "pos": [
+        70,
+        1260
+      ],
+      "size": [
+        280,
+        82
+      ],
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "height"
+          },
+          "links": [
+            288,
+            290,
+            292
+          ]
+        }
+      ],
+      "title": "Height",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        432,
+        "fixed"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 158,
+      "type": "PrimitiveNode",
+      "pos": [
+        70,
+        1130
+      ],
+      "size": [
+        280,
+        82
+      ],
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "widget": {
+            "name": "width"
+          },
+          "links": [
+            285,
+            287,
+            289
+          ]
+        }
+      ],
+      "title": "Width",
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        768,
+        "fixed"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 69,
+      "type": "SaveVideo",
+      "pos": [
+        1340,
+        70
+      ],
+      "size": [
+        676.23095703125,
+        774.23095703125
+      ],
+      "flags": {},
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 129
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.34",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/ComfyUI",
+        "mp4",
+        "auto"
+      ]
     }
   ],
   "links": [
@@ -1738,14 +1769,6 @@
       109,
       2,
       "VAE"
-    ],
-    [
-      187,
-      113,
-      0,
-      115,
-      0,
-      "MODEL"
     ],
     [
       188,
@@ -2012,24 +2035,32 @@
       "CLIP"
     ],
     [
-      296,
-      125,
+      299,
+      163,
+      0,
+      115,
+      0,
+      "MODEL"
+    ],
+    [
+      300,
+      115,
       0,
       110,
       0,
       "MODEL"
     ],
     [
-      297,
-      125,
+      301,
+      115,
       1,
       105,
       0,
       "CLIP"
     ],
     [
-      298,
-      125,
+      302,
+      115,
       1,
       107,
       0,
@@ -2106,10 +2137,10 @@
       "id": 13,
       "title": "Load models here",
       "bounding": [
-        -320,
-        -20,
-        410,
-        620
+        -321.0152587890625,
+        -220.0054473876953,
+        415.0762939453125,
+        810.8681030273438
       ],
       "color": "#3f789e",
       "font_size": 24,
@@ -2119,10 +2150,10 @@
       "id": 14,
       "title": "14B",
       "bounding": [
-        -300,
-        20,
-        370,
-        340
+        -301.0152587890625,
+        -180.00543212890625,
+        400.4576721191406,
+        491.27313232421875
       ],
       "color": "#3f789e",
       "font_size": 24,
@@ -2236,10 +2267,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.5559917313492523,
+      "scale": 0.7400249944258552,
       "offset": [
-        1159.243821801676,
-        331.33106311729125
+        194.57257577327744,
+        168.98269410047806
       ]
     },
     "frontendVersion": "1.20.4",
