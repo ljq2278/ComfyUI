@@ -5,8 +5,8 @@ import os
 
 COMFYUI_URL = "http://127.0.0.1:8190" # ComfyUI API 地址
 WORKFLOW_API_JSON_FILE = "/workspace/ComfyUI/api_workflow/sr_face_fix.json" # 你的工作流API格式文件
-INPUT_VIDEO_DIR = "/workspace/ComfyUI/mv/school/input"
-OUTPUT_VIDEO_DIR = "/workspace/ComfyUI/output/mv/school"
+INPUT_VIDEO_DIR = "/workspace/ComfyUI/mv/campus/input"
+OUTPUT_VIDEO_DIR = "/workspace/ComfyUI/output/mv/campus"
 
 def get_video_files(directory):
     return [f for f in os.listdir(directory) if f.endswith(('2.mp4', '3g.mp4', '.avi', '.mov'))] # 根据需要添加更多格式

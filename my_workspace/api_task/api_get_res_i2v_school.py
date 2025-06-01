@@ -4,7 +4,7 @@ import time
 import random
 import traceback
 import os
-from my_workspace.materials.shots.scene import mv_scenes_school
+from my_workspace.materials.shots.scene import mv_scenes_campus
 from my_workspace.materials.shots.act import mv_shots_new
 from my_workspace.materials.shots.cloth import clothing_prompts_female
 import platform
@@ -88,8 +88,8 @@ for it_cnt in range(0, iter_tt):
             cloth_content = clothing_prompts_female[cloth_ind]
             prompt_dct["少女"] += cloth_content
 
-            scene_ind = int(random.random()*len(mv_scenes_school))
-            scene_content = mv_scenes_school[scene_ind]
+            scene_ind = int(random.random()*len(mv_scenes_campus))
+            scene_content = mv_scenes_campus[scene_ind]
             prompt_dct.update({"场景": scene_content})
 
             file_name_prefix = f"""{act_ind}_{cloth_ind}_{scene_ind}"""

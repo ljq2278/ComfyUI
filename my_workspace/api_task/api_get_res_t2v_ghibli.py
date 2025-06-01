@@ -28,7 +28,7 @@ COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else  "http://127.0.0.1:81
 process_time = 290 if is_windows() else 400
 
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/comfy重要工作流/文字生视频吉卜力_api.json"  # 你的工作流API格式文件
-OUTPUT_VIDEO_DIR = COMFYUI_PATH + "/output/bg_shots"
+OUTPUT_VIDEO_DIR = COMFYUI_PATH + "/output/bg_shots/campus"
 
 
 def queue_prompt(prompt_workflow):
