@@ -12,6 +12,7 @@ import platform
 os.environ['http_proxy'] = ''
 os.environ['https_proxy'] = ''
 
+
 def is_windows():
     os_name = platform.system()
     if os_name.lower() == 'windows':
@@ -24,10 +25,13 @@ def is_windows():
         print(f"当前操作系统为 {os_name}")
         return False
 
-COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
-COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else  "http://127.0.0.1:8190"
 
-WORKFLOW_API_JSON_FILE = COMFYUI_PATH+"/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
+COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
+COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:8190"
+process_time = 34 if  is_windows() else 60
+
+WORKFLOW_API_JSON_FILE = COMFYUI_PATH + \
+    "/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
 INPUT_IMAGE_PATH = COMFYUI_PATH+"/my_workspace/control_objs/xiaoling.png"
 OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/role_shots"
 
@@ -47,6 +51,20 @@ def queue_prompt(prompt_workflow):
         return None
 
 
+def set_workflow(current_workflow, **kwargs):
+
+    load_image_node_id = "73"  # 替换为实际的节点ID
+    current_workflow[load_image_node_id]["inputs"]["image"] = kwargs["ref_img"]
+
+    save_video_node_id = "69"  # 替换为实际的节点ID
+    current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = kwargs["output_filename_prefix"]
+
+    posi_prompt_node_id = "105"  # 替换为实际的节点ID
+    current_workflow[posi_prompt_node_id]["inputs"]["text"] = kwargs["prompt"]
+
+    return current_workflow
+
+
 # 加载工作流模板
 with open(WORKFLOW_API_JSON_FILE, 'r', encoding="utf-8") as f:
     base_workflow = json.load(f)
@@ -54,7 +72,7 @@ with open(WORKFLOW_API_JSON_FILE, 'r', encoding="utf-8") as f:
 iter_tt = 10
 cont = 0
 for it_cnt in range(0, iter_tt):
-    mv_shots = [(i,v) for i,v in enumerate(mv_shots_new)]
+    mv_shots = [(i, v) for i, v in enumerate(mv_shots_new)]
     random.shuffle(mv_shots)
     for act_ind, itm in mv_shots:
         try:
@@ -72,24 +90,17 @@ for it_cnt in range(0, iter_tt):
             prompt_dct.update({"场景": scene_content})
 
             file_name_prefix = f"""{act_ind}_{cloth_ind}_{scene_ind}"""
-
             prompt_dct.update({k: v for k, v in itm.items() if k != "id"})
-            output_video_path = os.path.join(OUTPUT_VIDEO_DIR, f"res_{f}")
 
             current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
+            kwargs = {
+                "ref_img": INPUT_IMAGE_PATH,
+                "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"res_{f}"),
+                "prompt": f"{prompt_dct}"
+            }
+            current_workflow = set_workflow(current_workflow, **kwargs)
 
-            load_image_node_id = "73"  # 替换为实际的节点ID
-            current_workflow[load_image_node_id]["inputs"]["image"] = INPUT_IMAGE_PATH
-
-            save_video_node_id = "69"  # 替换为实际的节点ID
-            current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = os.path.join(
-                OUTPUT_VIDEO_DIR, file_name_prefix)
-
-            posi_prompt_node_id = "105"  # 替换为实际的节点ID
-            current_workflow[posi_prompt_node_id]["inputs"]["text"] = "\n".join(
-                [f"{k}: {v}" for k, v in prompt_dct.items()])
-
-            print(f"Processing video: {file_name_prefix}")
+            print(f"Processing video: {kwargs}")
             result = queue_prompt(current_workflow)
             if result and 'prompt_id' in result:
                 cont += 1
@@ -97,9 +108,9 @@ for it_cnt in range(0, iter_tt):
                 print(f"Queued with prompt_id: {prompt_id}, cont {cont}")
                 # 此处可以添加等待任务完成的逻辑，例如轮询 /history/{prompt_id}
             else:
-                print(f"Failed to queue {file_name_prefix}")
+                print(f"Failed to queue {kwargs}")
             print("-" * 30)
-            time.sleep(34)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
+            time.sleep(process_time)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
         except Exception as e:
             traceback.print_exc()
             print(f"except: {e}")
