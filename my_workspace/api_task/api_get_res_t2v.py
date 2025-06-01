@@ -70,17 +70,18 @@ nm = mv_shots_no_protagonist["name"]
 shot_list = mv_shots_no_protagonist["content"]
 mv_shots = [(i, v) for i, v in enumerate(shot_list)]
 
-mx_cont = 1
+mx_cont = 200
 cont = 0
 while True:
     current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
     kwargs = {"exp_name": nm}
 
     rd_scene = random.random()
+    mv_shot_cur = {}
     mv_shot_ind,  mv_shot_content = mv_shots[int(len(mv_shots)*rd_scene)]
-    mv_shot_content.update(
-        {"风格": "动漫动画，Studio Ghibli anime style, watercolor-inspired backgrounds, soft line art, expressive characters, natural lighting, hand-drawn aesthetic"})
-    kwargs.update({"prompt": mv_shot_content, "mv_shot_ind": mv_shot_ind})
+    mv_shot_cur.update(mv_shot_content)
+    mv_shot_cur.update({"风格": "动漫动画，Studio Ghibli anime style, watercolor-inspired backgrounds, soft line art, expressive characters, natural lighting, hand-drawn aesthetic"})
+    kwargs.update({"prompt": mv_shot_cur, "mv_shot_ind": mv_shot_ind})
 
     current_workflow = set_workflow(current_workflow, **kwargs)
 
@@ -96,6 +97,6 @@ while True:
     print("-" * 30)
     if cont > mx_cont:
         break
-    time.sleep(100)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
+    time.sleep(136)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
 
 print("All videos processed.")
