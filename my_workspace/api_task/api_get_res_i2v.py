@@ -4,9 +4,9 @@ import time
 import random
 import traceback
 import os
-from my_workspace.materials.scene import mv_scenes
-from my_workspace.materials.act import mv_shots_new, mv_shots_long_hair_blue_eyes_girl, mv_shots_long_hair_blue_eyes_girl_detailed
-from my_workspace.materials.cloth import clothing_prompts_female
+from my_workspace.materials.shots.scene import mv_scenes
+from my_workspace.materials.shots.act import mv_shots_new, mv_shots_long_hair_blue_eyes_girl, mv_shots_long_hair_blue_eyes_girl_detailed
+from my_workspace.materials.shots.cloth import clothing_prompts_female
 import platform
 
 os.environ['http_proxy'] = ''
