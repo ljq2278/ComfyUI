@@ -9,8 +9,8 @@ from my_workspace.materials.act import mv_shots_new, mv_shots_long_hair_blue_eye
 from my_workspace.materials.cloth import clothing_prompts_female
 
 COMFYUI_URL = "http://127.0.0.1:8188"  # ComfyUI API 地址
-WORKFLOW_API_JSON_FILE = "K:/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
-INPUT_IMAGE_PATH = "C:/Users/ljq/Desktop/xiaoling/09b768b0-bcf0-415d-a3ad-d4806ee48787.png"
+WORKFLOW_API_JSON_FILE = "f:/projects/ComfyUI/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
+INPUT_IMAGE_PATH = "f:/projects/ComfyUI/my_workspace/control_objs/xiaoling.png"
 OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/materials"
 
 
