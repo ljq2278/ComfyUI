@@ -25,7 +25,7 @@ def is_windows():
 
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
 COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else  "http://127.0.0.1:8190"
-process_time = 60 if is_windows() else 80
+process_time = 290 if is_windows() else 400
 
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/comfy重要工作流/文字生视频吉卜力_api.json"  # 你的工作流API格式文件
 OUTPUT_VIDEO_DIR = COMFYUI_PATH + "/output/bg_shots"

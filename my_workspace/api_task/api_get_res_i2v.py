@@ -69,7 +69,7 @@ def set_workflow(current_workflow, **kwargs):
 with open(WORKFLOW_API_JSON_FILE, 'r', encoding="utf-8") as f:
     base_workflow = json.load(f)
 
-iter_tt = 10
+iter_tt = 200
 cont = 0
 for it_cnt in range(0, iter_tt):
     mv_shots = [(i, v) for i, v in enumerate(mv_shots_new)]
@@ -77,7 +77,7 @@ for it_cnt in range(0, iter_tt):
     for act_ind, itm in mv_shots:
         try:
             prompt_dct = {
-                "风格": "动漫动画，Studio Ghibli anime style, watercolor-inspired backgrounds, soft line art, expressive characters, natural lighting, hand-drawn aesthetic",
+                "风格": "现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。",
                 "少女": "蓝色眼睛，黄色长发，白皮肤，",
             }
 

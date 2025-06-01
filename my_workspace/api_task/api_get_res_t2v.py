@@ -81,7 +81,7 @@ while True:
     mv_shot_cur = {}
     mv_shot_ind,  mv_shot_content = mv_shots[int(len(mv_shots)*rd_scene)]
     mv_shot_cur.update(mv_shot_content)
-    mv_shot_cur.update({"风格": "动漫动画，Studio Ghibli anime style, watercolor-inspired backgrounds, soft line art, expressive characters, natural lighting, hand-drawn aesthetic"})
+    mv_shot_cur.update({"风格": "现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。"})
     kwargs.update({"prompt": mv_shot_cur, "mv_shot_ind": mv_shot_ind})
 
     current_workflow = set_workflow(current_workflow, **kwargs)
