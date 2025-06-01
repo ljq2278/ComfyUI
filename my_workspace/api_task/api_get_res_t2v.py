@@ -5,11 +5,26 @@ import os
 import random
 import requests
 from my_workspace.materials.bg_shots import mv_shots_no_protagonist
+import platform
 
 os.environ['http_proxy'] = ''
 os.environ['https_proxy'] = ''
-COMFYUI_PATH = "f:/projects/ComfyUI"
-COMFYUI_URL = "http://127.0.0.1:8188"  # ComfyUI API 地址
+
+def is_windows():
+    os_name = platform.system()
+    if os_name.lower() == 'windows':
+        print("当前操作系统为 Windows")
+        return True
+    elif os_name.lower() == 'linux':
+        print("当前操作系统为 Linux")
+        return False
+    else:
+        print(f"当前操作系统为 {os_name}")
+        return False
+
+COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
+COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else  "http://127.0.0.1:8190"
+
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/comfy重要工作流/文字生视频_api.json"  # 你的工作流API格式文件
 OUTPUT_VIDEO_DIR = COMFYUI_PATH + "/output/bg_shots"
 

@@ -7,11 +7,29 @@ import os
 from my_workspace.materials.scene import mv_scenes
 from my_workspace.materials.act import mv_shots_new, mv_shots_long_hair_blue_eyes_girl, mv_shots_long_hair_blue_eyes_girl_detailed
 from my_workspace.materials.cloth import clothing_prompts_female
+import platform
 
-COMFYUI_URL = "http://127.0.0.1:8188"  # ComfyUI API 地址
-WORKFLOW_API_JSON_FILE = "f:/projects/ComfyUI/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
-INPUT_IMAGE_PATH = "f:/projects/ComfyUI/my_workspace/control_objs/xiaoling.png"
-OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/materials"
+os.environ['http_proxy'] = ''
+os.environ['https_proxy'] = ''
+
+def is_windows():
+    os_name = platform.system()
+    if os_name.lower() == 'windows':
+        print("当前操作系统为 Windows")
+        return True
+    elif os_name.lower() == 'linux':
+        print("当前操作系统为 Linux")
+        return False
+    else:
+        print(f"当前操作系统为 {os_name}")
+        return False
+
+COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
+COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else  "http://127.0.0.1:8190"
+
+WORKFLOW_API_JSON_FILE = COMFYUI_PATH+"/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
+INPUT_IMAGE_PATH = COMFYUI_PATH+"/my_workspace/control_objs/xiaoling.png"
+OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/materials"
 
 
 def queue_prompt(prompt_workflow):
