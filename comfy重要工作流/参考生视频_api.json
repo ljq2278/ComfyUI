@@ -1,0 +1,230 @@
+{
+  "68": {
+    "inputs": {
+      "fps": 16,
+      "images": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "创建视频"
+    }
+  },
+  "69": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "auto",
+      "codec": "auto",
+      "video": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "保存视频"
+    }
+  },
+  "73": {
+    "inputs": {
+      "image": "09b768b0-bcf0-415d-a3ad-d4806ee48787.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "105": {
+    "inputs": {
+      "text": " \"拍摄角度\": \"平视\",\n        \"距离\": \"中全景 (Medium Full Shot)\",\n        \"运镜\": \"缓慢后拉\",\n        \"动作\": \"少女站在晨曦/夕阳的光芒中，长发被照亮，向镜头挥手告别\",\n        \"表情\": \"温暖，微笑\",",
+      "clip": [
+        "125",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "107": {
+    "inputs": {
+      "text": "过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走,",
+      "clip": [
+        "125",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "108": {
+    "inputs": {
+      "seed": 397326390725582,
+      "steps": 4,
+      "cfg": 1,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "110",
+        0
+      ],
+      "positive": [
+        "109",
+        0
+      ],
+      "negative": [
+        "109",
+        1
+      ],
+      "latent_image": [
+        "109",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "109": {
+    "inputs": {
+      "width": 832,
+      "height": 480,
+      "length": [
+        "139",
+        0
+      ],
+      "batch_size": 1,
+      "strength": 0.5000000000000001,
+      "positive": [
+        "105",
+        0
+      ],
+      "negative": [
+        "107",
+        0
+      ],
+      "vae": [
+        "114",
+        0
+      ],
+      "reference_image": [
+        "73",
+        0
+      ]
+    },
+    "class_type": "WanVaceToVideo",
+    "_meta": {
+      "title": "WanVaceToVideo"
+    }
+  },
+  "110": {
+    "inputs": {
+      "shift": 8.000000000000002,
+      "model": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "采样算法（SD3）"
+    }
+  },
+  "114": {
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "118": {
+    "inputs": {
+      "trim_amount": [
+        "109",
+        3
+      ],
+      "samples": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "TrimVideoLatent",
+    "_meta": {
+      "title": "TrimVideoLatent"
+    }
+  },
+  "119": {
+    "inputs": {
+      "samples": [
+        "118",
+        0
+      ],
+      "vae": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "124": {
+    "inputs": {
+      "unet_name": "wan2.1_vace_1.3B_fp16.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "125": {
+    "inputs": {
+      "lora_name": "Wan21_CausVid_bidirect2_T2V_1_3B_lora_rank32.safetensors",
+      "strength_model": 0.7000000000000002,
+      "strength_clip": 1,
+      "model": [
+        "124",
+        0
+      ],
+      "clip": [
+        "126",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载LoRA"
+    }
+  },
+  "126": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "139": {
+    "inputs": {
+      "value": 81
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Length"
+    }
+  }
+}

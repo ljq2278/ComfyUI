@@ -1,0 +1,180 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 954022616111474,
+      "steps": 30,
+      "cfg": 6,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "48",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "7",
+        0
+      ],
+      "latent_image": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": " \"拍摄场景\": \"街头咖啡馆的窗边空位\",\n        \"角度\": \"窗外向内平视\",\n        \"镜头距离\": \"中景\",\n        \"运镜\": \n            \"类型\": \"缓慢推进\",\n            \"关注焦点\": \"桌上未喝完的咖啡杯\",\n            \"移动变化\": \"镜头穿过玻璃，缓慢推向桌上一个还冒着热气的咖啡杯和一本翻开的书\"\n        ,\n        \"画面内容\": \"咖啡馆窗边一个空座位，桌上放着一杯咖啡和一本书，窗外是模糊的街景。\",\n        \"背景人群数量\": \"少 (背景中模糊的行人)\",\n        \"镜头含义\": \"片刻的宁静，未完的故事，都市人的小憩。\"\nStudio Ghibli anime style, watercolor-inspired backgrounds, soft line art, expressive characters, natural lighting, hand-drawn aesthetic",
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，背景人很多，倒着走",
+      "clip": [
+        "38",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "28": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "fps": 16,
+      "lossless": false,
+      "quality": 90,
+      "method": "default"
+    },
+    "class_type": "SaveAnimatedWEBP",
+    "_meta": {
+      "title": "保存动画（WEBP）"
+    }
+  },
+  "37": {
+    "inputs": {
+      "unet_name": "wan2.1_t2v_1.3B_fp16.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "38": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "39": {
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "40": {
+    "inputs": {
+      "width": 832,
+      "height": 480,
+      "length": 33,
+      "batch_size": 1
+    },
+    "class_type": "EmptyHunyuanLatentVideo",
+    "_meta": {
+      "title": "空Latent视频（混元）"
+    }
+  },
+  "48": {
+    "inputs": {
+      "shift": 8,
+      "model": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "采样算法（SD3）"
+    }
+  },
+  "50": {
+    "inputs": {
+      "lora_name": "Su_Ghib_Ep21.safetensors",
+      "strength_model": 1
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器（仅模型）"
+    }
+  },
+  "52": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "mp4",
+      "codec": "auto",
+      "video": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "保存视频"
+    }
+  },
+  "53": {
+    "inputs": {
+      "fps": 16,
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "创建视频"
+    }
+  }
+}
