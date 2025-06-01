@@ -4,7 +4,7 @@ import time
 import os
 import random
 import requests
-from ComfyUI.materials.bg_shots.bg_shots import mv_shots_no_protagonist
+from my_workspace.materials.bg_shots.bg_shots import mv_shots_no_protagonist
 os.environ['http_proxy'] = ''
 os.environ['https_proxy'] = ''
 

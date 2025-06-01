@@ -4,9 +4,9 @@ import time
 import random
 import traceback
 import os
-from materials.scene import mv_scenes
-from materials.act import mv_shots_new, mv_shots_long_hair_blue_eyes_girl, mv_shots_long_hair_blue_eyes_girl_detailed
-from materials.cloth import clothing_prompts_female
+from my_workspace.materials.scene import mv_scenes
+from my_workspace.materials.act import mv_shots_new, mv_shots_long_hair_blue_eyes_girl, mv_shots_long_hair_blue_eyes_girl_detailed
+from my_workspace.materials.cloth import clothing_prompts_female
 
 COMFYUI_URL = "http://127.0.0.1:8188"  # ComfyUI API 地址
 WORKFLOW_API_JSON_FILE = "K:/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
