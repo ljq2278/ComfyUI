@@ -33,7 +33,7 @@ process_time = 34 if  is_windows() else 60
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + \
     "/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
 INPUT_IMAGE_PATH = COMFYUI_PATH+"/my_workspace/control_objs/xiaoling.png"
-OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/role_shots"
+OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/role_shots/campus"
 
 
 def queue_prompt(prompt_workflow):
