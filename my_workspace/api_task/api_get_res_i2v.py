@@ -61,6 +61,9 @@ def set_workflow(current_workflow, **kwargs):
 
     posi_prompt_node_id = "105"  # 替换为实际的节点ID
     current_workflow[posi_prompt_node_id]["inputs"]["text"] = kwargs["prompt"]
+    
+    k_sampler_node_id = "108"  # 替换为实际的节点ID
+    current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(random.random()*10000000000)
 
     return current_workflow
 

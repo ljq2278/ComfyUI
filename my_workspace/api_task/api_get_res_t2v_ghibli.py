@@ -48,17 +48,20 @@ def queue_prompt(prompt_workflow):
 
 def set_workflow(current_workflow, **kwargs):
 
-    save_video_node_id = "6"  # 替换为实际的节点ID
-    current_workflow[save_video_node_id]["inputs"]["text"] = f"""{kwargs["prompt"]}"""
+    posi_prompt_node_id = "6"  # 替换为实际的节点ID
+    current_workflow[posi_prompt_node_id]["inputs"]["text"] = f"""{kwargs["prompt"]}"""
 
-    save_video_node_id = "7"  # 替换为实际的节点ID
-    current_workflow[save_video_node_id]["inputs"]["text"] = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，倒着走"
+    nege_prompt_node_id = "7"  # 替换为实际的节点ID
+    current_workflow[nege_prompt_node_id]["inputs"]["text"] = "色调艳丽，过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，倒着走"
 
     # save_video_node_id = "40"  # 替换为实际的节点ID
     # current_workflow[save_video_node_id]["inputs"]["length"] = 49
 
     save_video_node_id = "50"  # 替换为实际的节点ID
     current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = os.path.join(OUTPUT_VIDEO_DIR, f"""res_{kwargs["exp_name"]}_{kwargs["mv_shot_ind"]}""")
+    
+    k_sampler_node_id = "3"
+    current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(random.random()*10000000000)
 
     return current_workflow
 
