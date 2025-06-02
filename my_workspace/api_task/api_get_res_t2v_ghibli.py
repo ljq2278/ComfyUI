@@ -5,7 +5,7 @@ import os
 import random
 import traceback
 import requests
-from my_workspace.materials.bg_shots.bg_shots import campus_mv_shots
+from my_workspace.shots.bg_shots.content import bg_shots_all
 import platform
 
 os.environ['http_proxy'] = ''
@@ -70,8 +70,8 @@ def set_workflow(current_workflow, **kwargs):
 with open(WORKFLOW_API_JSON_FILE, 'r', encoding="utf-8") as f:
     base_workflow = json.load(f)
 
-nm = campus_mv_shots["name"]
-shot_list = campus_mv_shots["content"]
+nm = "campus"
+shot_list = bg_shots_all[nm]["content"]
 mv_shots = [(i, v) for i, v in enumerate(shot_list)]
 
 candi_shots = [

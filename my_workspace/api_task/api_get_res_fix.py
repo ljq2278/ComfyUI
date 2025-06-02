@@ -2,14 +2,36 @@ import json
 import requests
 import time
 import os
+import platform
 
-COMFYUI_URL = "http://127.0.0.1:8190" # ComfyUI API 地址
-WORKFLOW_API_JSON_FILE = "/workspace/ComfyUI/api_workflow/sr_face_fix.json" # 你的工作流API格式文件
-INPUT_VIDEO_DIR = "/workspace/ComfyUI/mv/campus/input"
-OUTPUT_VIDEO_DIR = "/workspace/ComfyUI/output/mv/campus"
+os.environ['http_proxy'] = ''
+os.environ['https_proxy'] = ''
+
+
+def is_windows():
+    os_name = platform.system()
+    if os_name.lower() == 'windows':
+        print("当前操作系统为 Windows")
+        return True
+    elif os_name.lower() == 'linux':
+        print("当前操作系统为 Linux")
+        return False
+    else:
+        print(f"当前操作系统为 {os_name}")
+        return False
+
+
+COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
+COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:8190"
+process_time = 90 if  is_windows() else 120
+
+WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
+INPUT_VIDEO_DIR = COMFYUI_PATH+"/output/bg_shots/campus/use"
+OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/bg_shots/campus/fix"
+
 
 def get_video_files(directory):
-    return [f for f in os.listdir(directory) if f.endswith(('2.mp4', '3g.mp4', '.avi', '.mov'))] # 根据需要添加更多格式
+    return [f for f in os.listdir(directory) if f.endswith(('.mp4', '.avi', '.mov'))] # 根据需要添加更多格式
 
 def queue_prompt(prompt_workflow):
     p = {"prompt": prompt_workflow}
@@ -58,7 +80,7 @@ for f in video_files:
         # 此处可以添加等待任务完成的逻辑，例如轮询 /history/{prompt_id}
     else:
         print(f"Failed to queue {input_video_path}")
-    print("-" * 30)
+    print("-" * process_time)
     time.sleep(5) # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
 
 print("All videos processed.")

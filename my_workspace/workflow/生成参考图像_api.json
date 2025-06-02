@@ -1,0 +1,121 @@
+{
+  "3": {
+    "inputs": {
+      "seed": 713427013494816,
+      "steps": 20,
+      "cfg": 4.01,
+      "sampler_name": "euler",
+      "scheduler": "sgm_uniform",
+      "denoise": 1,
+      "model": [
+        "55",
+        0
+      ],
+      "positive": [
+        "16",
+        0
+      ],
+      "negative": [
+        "40",
+        0
+      ],
+      "latent_image": [
+        "53",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "4": {
+    "inputs": {
+      "ckpt_name": "darksushi225D.fUnW.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "8": {
+    "inputs": {
+      "samples": [
+        "3",
+        0
+      ],
+      "vae": [
+        "4",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "9": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "8",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "保存图像"
+    }
+  },
+  "16": {
+    "inputs": {
+      "text": "        \n            \"拍摄场景\": \"校园书店里翻阅书籍的手\",\n            \"角度\": \"过肩\",\n            \"镜头距离\": \"近景 (书和手)\",\n            \"运镜\": \"类型\": \"固定\", \"关注焦点\": \"手指翻动书页的动作和书本内容\", \"移动变化\": \"无\",\n            \"画面内容\": \"在书店书架旁，一双手捧着一本书，手指轻轻翻动书页，能看到部分书页内容。\",\n            \"背景人群数量\": \"少 (旁边模糊的其他读者或书架)\",\n            \"镜头含义\": \"阅读的乐趣，知识的探索。\"\n        ,itchen with a window to the outdoors mountain range bright sun clouds forest\n\"风格\": \"现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。\",\n",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Positive Prompt"
+    }
+  },
+  "40": {
+    "inputs": {
+      "text": "low quality, blurry, bad anatomy, distorted, deformed, extra limbs, missing limbs, unnatural proportions, poorly drawn face, asymmetry, low contrast, low resolution, artifacts, noise, watermark, text, jpeg artifacts, mutated hands, bad fingers, bad hands, bad feet, disfigured, cropped, worst quality, signature, writing, error, wrong perspective, unnatural lighting, overly saturated, weird eyes, unnatural expression, cloned face, overexposed, underexposed.",
+      "clip": [
+        "4",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "53": {
+    "inputs": {
+      "width": 1200,
+      "height": 720,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "空Latent图像（SD3）"
+    }
+  },
+  "55": {
+    "inputs": {
+      "lora_name": "animemix_v3_offset.safetensors",
+      "strength_model": 1,
+      "model": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "LoraLoaderModelOnly",
+    "_meta": {
+      "title": "LoRA加载器（仅模型）"
+    }
+  }
+}

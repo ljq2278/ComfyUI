@@ -25,4 +25,5 @@ openapi.yaml
 filtered-openapi.yaml
 uv.lock
 /mv
+/my_workspace/meterials
 nohup.out
