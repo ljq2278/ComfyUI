@@ -92,7 +92,7 @@ for it_cnt in range(0, iter_tt):
             current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
             img_ind = int(random.random()*6)
             
-            file_name_prefix = f"""{exp_nm}_内容#{prompt_dct["画面内容"]}"""
+            file_name_prefix = f"""{exp_nm}_歌词#{prompt_dct["歌词"]}"""
             kwargs = {
                 "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"{file_name_prefix}"),
                 "prompt": f"{prompt_dct}"
