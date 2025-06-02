@@ -1,7 +1,7 @@
 {
   "3": {
     "inputs": {
-      "seed": 713427013494816,
+      "seed": 350599308399208,
       "steps": 20,
       "cfg": 4.01,
       "sampler_name": "euler",
@@ -31,7 +31,7 @@
   },
   "4": {
     "inputs": {
-      "ckpt_name": "darksushi225D.fUnW.safetensors"
+      "ckpt_name": "anythingV3_fp16.safetensors"
     },
     "class_type": "CheckpointLoaderSimple",
     "_meta": {
@@ -69,7 +69,13 @@
   },
   "16": {
     "inputs": {
-      "text": "        \n            \"拍摄场景\": \"校园书店里翻阅书籍的手\",\n            \"角度\": \"过肩\",\n            \"镜头距离\": \"近景 (书和手)\",\n            \"运镜\": \"类型\": \"固定\", \"关注焦点\": \"手指翻动书页的动作和书本内容\", \"移动变化\": \"无\",\n            \"画面内容\": \"在书店书架旁，一双手捧着一本书，手指轻轻翻动书页，能看到部分书页内容。\",\n            \"背景人群数量\": \"少 (旁边模糊的其他读者或书架)\",\n            \"镜头含义\": \"阅读的乐趣，知识的探索。\"\n        ,itchen with a window to the outdoors mountain range bright sun clouds forest\n\"风格\": \"现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。\",\n",
+      "text": " \n            \"Scene\": \"Playground at dawn\",\n            \"Angle\": \"Low angle shot\",\n            \"Distance\": \"Long shot\",\n            \"Camera Movement\": \"Static shot. Focus: Horizontal bar or basketball hoop in the dawn light, gradually illuminated by sunlight.\",\n            \"Frame Content\": \"Empty horizontal bar or basketball hoop, distant mist, sunlight slowly spills down.\",\n            \"Background Crowd Size\": \"0 people\",\n            \"Shot Meaning\": \"A tranquil morning, the start of a new day, full of hope.\"\n        ,\n\"Style\": \"Modern high-definition Ghibli animation style, delicate, clean, and bright hand-drawn aesthetics with clear lines and naturally vivid colors. Avoid excessive yellowing or dim tones, ensuring a gentle, transparent, and emotionally rich animation texture.\"\n",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "4",
         1
@@ -83,6 +89,12 @@
   "40": {
     "inputs": {
       "text": "low quality, blurry, bad anatomy, distorted, deformed, extra limbs, missing limbs, unnatural proportions, poorly drawn face, asymmetry, low contrast, low resolution, artifacts, noise, watermark, text, jpeg artifacts, mutated hands, bad fingers, bad hands, bad feet, disfigured, cropped, worst quality, signature, writing, error, wrong perspective, unnatural lighting, overly saturated, weird eyes, unnatural expression, cloned face, overexposed, underexposed.",
+      "speak_and_recognation": {
+        "__value__": [
+          false,
+          true
+        ]
+      },
       "clip": [
         "4",
         1

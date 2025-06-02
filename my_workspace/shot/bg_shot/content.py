@@ -3,7 +3,7 @@
 bg_shots_all = {
     # 设计100个反应校园生活的无主角的mv镜头，需要给出拍摄场景，角度，镜头距离，运镜，画面内容，背景人群数量，镜头含义。
     # 其中运镜要给出关注焦点及其移动变化。另外不要拍具体某人的特写。用python list表形式返回结果，每个项包含
-    # "场景""角度""距离""运镜""画面内容""背景人群数量""镜头含义"几个字段
+    # "场景""角度""距离""运镜""画面内容""背景人群数量""镜头含义"几个字段。
     "campus": [
         # --- 清晨与早晨 ---
         {
@@ -897,4 +897,918 @@ bg_shots_all = {
         }
     ]
 
+}
+
+# trans_dct = {
+#     "Scene": "场景",
+#     "场景": "Scene",
+#     "Angle": "角度",
+#     "角度": "Angle",
+#     "Distance": "距离",
+#     "距离": "Distance",
+#     "Camera Movement": "运镜",
+#     "运镜": "Camera Movement",
+#     "Frame Content": "画面内容",
+#     "画面内容": "Frame Content",
+#     "Background Crowd Size": "背景人群数量",
+#     "背景人群数量": "Background Crowd Size",
+#     "Shot Meaning": "镜头含义",
+#     "镜头含义": "Shot Meaning",
+# }
+
+bg_shots_all_en = {
+    "campus": [
+        # 设计100个反应校园生活的无主角的mv镜头，需要给出拍摄场景，角度，镜头距离，运镜，画面内容，背景人群数量，镜头含义。
+        # 其中运镜要给出关注焦点及其移动变化。另外不要拍具体某人的特写。用python list表形式返回结果，每个项包含
+        # "Scene""Angle""Distance""Camera Movement""Frame Content""Background Crowd Size""Shot Meaning"几个字段。字段内容用英文给出
+        {
+            "Scene": "Playground at dawn",
+            "Angle": "Low angle shot",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot. Focus: Horizontal bar or basketball hoop in the dawn light, gradually illuminated by sunlight.",
+            "Frame Content": "Empty horizontal bar or basketball hoop, distant mist, sunlight slowly spills down.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "A tranquil morning, the start of a new day, full of hope."
+        },
+        {
+            "Scene": "Dormitory corridor",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow push-in from one end of the corridor. Focus: The light at the end of the corridor, becoming sharper as the camera advances.",
+            "Frame Content": "Several closed dormitory doors, dim corridor lighting, morning light shining through the window at the end.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The eve of the dormitory's awakening, vitality brewing in tranquility."
+        },
+        {
+            "Scene": "Campus tree-lined path",
+            "Angle": "Eye-level",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow pan left. Focus: Starts on an empty, sun-drenched bench, pans to the blurred backs of a few students walking towards a teaching building.",
+            "Frame Content": "Sunlight filters through leaves onto the path, a few students with backpacks (blurred backs) walk towards a distant teaching building.",
+            "Background Crowd Size": "Few (1-5 people)",
+            "Shot Meaning": "A new day, students begin their day of study."
+        },
+        {
+            "Scene": "Entrance of a teaching building",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot, slightly accelerated time-lapse. Focus: Revolving door or entrance, a constant flow of students entering and exiting.",
+            "Frame Content": "Blurred figures of students rapidly passing through the glass doors or revolving door at the entrance of a teaching building.",
+            "Background Crowd Size": "Many (30-50 people)",
+            "Shot Meaning": "Morning rush, an atmosphere дизайнаf eagerness to learn."
+        },
+        {
+            "Scene": "Cafeteria breakfast window",
+            "Angle": "High angle shot (looking down)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Trays being passed between windows, different types of breakfast items being taken.",
+            "Frame Content": "Busy hands of staff inside the window, trays being passed out, various breakfast items (buns, soy milk, porridge).",
+            "Background Crowd Size": "Some (5-15 people) - hands and trays only",
+            "Shot Meaning": "A breakfast time full of life's daily hustle, refueling energy."
+        },
+        # --- Class and Study ---
+        {
+            "Scene": "Lecture hall (tiered classroom)",
+            "Angle": "High angle shot from the rear",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow pan from left to right. Focus: Starts on the content projected on the screen at the podium, slowly sweeps over the heads and notebooks of students listening attentively below.",
+            "Frame Content": "Projector is on at the podium, students below are either taking notes or looking at the screen, no faces visible.",
+            "Background Crowd Size": "Large crowd (50+ people)",
+            "Shot Meaning": "Focus in the classroom and the transmission of knowledge."
+        },
+        {
+            "Scene": "Library reading area",
+            "Angle": "Eye-level, moving through",
+            "Distance": "Medium close-up",
+            "Camera Movement": "Steadicam moving slowly forward between bookshelves or rows of seats. Focus: Gliding past rows of book spines or the side/back profiles of students engrossed in study.",
+            "Frame Content": "Rows of neat bookshelves, or students studying quietly, only arms, books, and computer screens visible.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "Immersed in the ocean of knowledge, a quiet study atmosphere."
+        },
+        {
+            "Scene": "Study room",
+            "Angle": "Eye-level from desk",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: An open book and notebook, a pen writing quickly (hands only).",
+            "Frame Content": "Books, stationery, notebooks, desk lamp, a hand diligently taking notes or flipping pages.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "A moment of diligent study, a thirst for knowledge."
+        },
+        {
+            "Scene": "Laboratory",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan right. Focus: Starts on precision instruments with blinking indicator lights, pans to blurred figures in lab coats operating equipment (hands visible).",
+            "Frame Content": "Various lab instruments, beakers, test tubes, students (only white coats and hands visible) conducting experiments.",
+            "Background Crowd Size": "Some (5-15 people)",
+            "Shot Meaning": "Scientific exploration, a spirit of rigor and pragmatism."
+        },
+        {
+            "Scene": "Empty classroom blackboard",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: The process of a blackboard filled with writing being erased and new writing appearing (time-lapse can be used).",
+            "Frame Content": "Blackboard covered in dense formulas or notes, then a hand erases it, or leaves a part.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "The inheritance and renewal of knowledge, the end and beginning of a class."
+        },
+        {
+            "Scene": "Computer lab",
+            "Angle": "Low angle, moving along rows of seats",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow tracking shot forward. Focus: Rows of illuminated computer screens and blurred hands typing on keyboards.",
+            "Frame Content": "Students sitting in front of computers, screens displaying code or documents, only backs or side profiles visible.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "Learning in the information age, digital campus life."
+        },
+        {
+            "Scene": "Group discussion room",
+            "Angle": "Overhead shot (through a glass window)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Papers and laptops scattered on a table, and several hands gesturing during discussion.",
+            "Frame Content": "Several students gathered for discussion, only the tops of their heads and materials on the table visible, along with animated hand gestures.",
+            "Background Crowd Size": "Few (3-5 people)",
+            "Shot Meaning": "The collision of ideas, the importance of teamwork."
+        },
+        # --- Noon and Leisure ---
+        {
+            "Scene": "Cafeteria",
+            "Angle": "High angle shot",
+            "Distance": "Full shot",
+            "Camera Movement": "Static shot, time-lapse. Focus: The crowd densité changing from sparse to dense then sparse again, tables filling and emptying.",
+            "Frame Content": "Students pour into the cafeteria, get food, eat, and gradually leave, tables becoming empty.",
+            "Background Crowd Size": "Large crowd (50+ people), dynamic",
+            "Shot Meaning": "Lunch peak, the daily rhythm of campus life."
+        },
+        {
+            "Scene": "Corner of a campus cafe",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, focus on a coffee cup. Focus: Steam rising from a coffee cup, blurred figures chatting in the background.",
+            "Frame Content": "A cup of coffee on a table, steaming, with blurred students chatting or reading in the background.",
+            "Background Crowd Size": "Few (1-3 people), blurred background",
+            "Shot Meaning": "A short break, enjoying a moment of peace and comfort."
+        },
+        {
+            "Scene": "Lawn",
+            "Angle": "Low angle",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan left. Focus: Starts on sunlit grass, pans to several pairs of legs and feet sitting or lying side by side.",
+            "Frame Content": "Students in twos and threes sitting on the lawn chatting, reading, only legs or books visible.",
+            "Background Crowd Size": "Some (5-15 people)",
+            "Shot Meaning": "Leisurely afternoon, youthful relaxation."
+        },
+        {
+            "Scene": "Dormitory balcony",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Clothes drying in the wind, with a corner of the campus in the background.",
+            "Frame Content": "Colorful clothes drying on a balcony, swaying in the gentle breeze.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The breath of life, an ordinary yet real student daily routine."
+        },
+        {
+            "Scene": "Basketball court",
+            "Angle": "Side eye-level",
+            "Distance": "Full shot",
+            "Camera Movement": "Fast pan following the basketball. Focus: The fast-moving basketball and the blurred figures chasing it.",
+            "Frame Content": "Several students playing basketball, actions of dribbling and shooting (no close-ups of faces).",
+            "Background Crowd Size": "Some (5-10 people)",
+            "Shot Meaning": "Sweat and effort, a vibrant sports scene."
+        },
+        {
+            "Scene": "Campus supermarket",
+            "Angle": "Moving through aisles",
+            "Distance": "Medium close-up",
+            "Camera Movement": "Push-in. Focus: A wide array of products, and blurred hands selecting items.",
+            "Frame Content": "Students' hands selecting snacks, drinks, and daily necessities from shelves.",
+            "Background Crowd Size": "Some (5-15 people)",
+            "Shot Meaning": "The convenience of campus life, meeting daily needs."
+        },
+        # --- Afternoon and Activities ---
+        {
+            "Scene": "Club activity room",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow orbit around an activity center (e.g., a guitar, an easel). Focus: Props for club activities (like musical instruments, paintbrushes, chessboards), and participants' hands or blurred side profiles.",
+            "Frame Content": "Music club members playing guitar (hands and guitar only), art club members painting (easel and hands only).",
+            "Background Crowd Size": "Some (5-10 people)",
+            "Shot Meaning": "Cultivating interests, colorful extracurricular life."
+        },
+        {
+            "Scene": "Library book return",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: A book being placed into a return bin, or the process of using a self-service checkout machine.",
+            "Frame Content": "A student's hand dropping a book into the return bin, or operating a machine screen.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "The flow of knowledge, the end of a loan."
+        },
+        {
+            "Scene": "Running track",
+            "Angle": "Low angle, following",
+            "Distance": "Medium close-up",
+            "Camera Movement": "Tracking shot following running feet. Focus: Feet alternating on the track, and dust kicked up.",
+            "Frame Content": "One or several pairs of sneakers running on a rubber track, only lower legs and feet visible.",
+            "Background Crowd Size": "Few (1-5 people)",
+            "Shot Meaning": "Physical exercise, persistent effort."
+        },
+        {
+            "Scene": "Stairwell in a teaching building",
+            "Angle": "Looking up or down",
+            "Distance": "Full shot",
+            "Camera Movement": "Static shot. Focus: The sound of footsteps and intersecting blurred figures going up and down stairs.",
+            "Frame Content": "Students going up and down stairs between classes, forming flowing lines, no faces visible.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "The rush between classes, a passage connecting different classrooms."
+        },
+        {
+            "Scene": "Campus package pick-up point",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan from a pile of packages to students' hands picking them up. Focus: Various packages, students' hands searching for and picking up packages.",
+            "Frame Content": "A mountain of packages, students searching for their own (close-up on hands and packages).",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "Lifestyle in the e-commerce era, anticipation and reward."
+        },
+        {
+            "Scene": "Piano room",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: Hands dancing on piano keys, or hands plucking strings.",
+            "Frame Content": "A pair of hands playing the piano, or a violin, camera focused on hands and instrument.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "Artistic cultivation, showcasing individual talents."
+        },
+        {
+            "Scene": "Art studio",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Slow move from a palette to a painting on an easel. Focus: Colorful paints on the palette, a gradually clearing partial view of the artwork.",
+            "Frame Content": "A painting on an easel being worked on, a hand holding a brush dabbing on the canvas.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "The concentration of creation, the birth of beauty."
+        },
+        # --- Dusk and Evening ---
+        {
+            "Scene": "Window of a teaching building",
+            "Angle": "Eye-level looking out",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot. Focus: The sunset and campus silhouette outside the window, with a blurred window frame in the foreground.",
+            "Frame Content": "Looking out from a classroom or corridor window, a beautiful sunset dyeing the sky and distant buildings red.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "End of a day of study, the tranquility and beauty of dusk."
+        },
+        {
+            "Scene": "Cafeteria dinner",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan right. Focus: Starts from an empty plate, pans to blurred figures of students eating and chatting (not highlighting individuals).",
+            "Frame Content": "Students enjoying dinner, food on plates, a relaxed conversational atmosphere.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "Dinner time, relaxation and communication."
+        },
+        {
+            "Scene": "Below a dormitory building",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Windows lighting up one by one, and occasional passing silhouettes.",
+            "Frame Content": "Dormitory building at dusk, windows gradually lighting up, blurred figures active by the windows.",
+            "Background Crowd Size": "Few (blurred silhouettes)",
+            "Shot Meaning": "A sense of belonging, the beginning of the night."
+        },
+        {
+            "Scene": "Playground at dusk",
+            "Angle": "Eye-level",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow pan left. Focus: From a goalpost in the afterglow of sunset, pans to blurred figures walking or jogging on the playground.",
+            "Frame Content": "Silhouettes of students walking, jogging, or playing football on the playground under the sunset.",
+            "Background Crowd Size": "Some (5-15 people)",
+            "Shot Meaning": "Dusk exercise and leisure, enjoying free time."
+        },
+        {
+            "Scene": "Library lights",
+            "Angle": "Long shot, low angle looking up",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot. Focus: The brightly lit library building as a whole against the night sky.",
+            "Frame Content": "In the night, the library lights appear particularly bright, like a beacon of knowledge.",
+            "Background Crowd Size": "0 people (primarily architecture)",
+            "Shot Meaning": "People still striving for academics at night, the hall of knowledge never sleeps."
+        },
+        # --- Night and Late Night ---
+        {
+            "Scene": "Study room / Library night reading area",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow push-in towards a lit desk lamp. Focus: Books and stationery under the lamp, with blurred figures studying quietly in the background.",
+            "Frame Content": "Night study room, many students studying quietly under desk lamps, only backs or lamps and books visible.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "Persistence and effort at night, striving for dreams."
+        },
+        {
+            "Scene": "Dormitory corridor (late night)",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Faint light or computer screen glow seeping from under a door.",
+            "Frame Content": "Quiet dormitory corridor late at night, most rooms are dark, light seeps from under one door.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Late-night diligence or entertainment, an individual's night."
+        },
+        {
+            "Scene": "Campus path at night",
+            "Angle": "Eye-level, following",
+            "Distance": "Medium shot",
+            "Camera Movement": "Follow shot from behind one or a few students returning late. Focus: Lengthened shadows under streetlights and advancing footsteps.",
+            "Frame Content": "Under streetlights, one or a few students walk on a path, only backs and feet visible.",
+            "Background Crowd Size": "Few (1-3 people)",
+            "Shot Meaning": "The journey home at night, the end of a day."
+        },
+        {
+            "Scene": "Empty classroom (at night)",
+            "Angle": "Eye-level from doorway",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow pull-out. Focus: From the podium, pulling out to the entire empty classroom, illuminated only by moonlight or streetlights from outside.",
+            "Frame Content": "Empty classroom at night, desks and chairs neatly arranged, moonlight shining through windows.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Tranquility after the hustle, awaiting the next day."
+        },
+        {
+            "Scene": "Campus convenience store (at night)",
+            "Angle": "Eye-level from outside, looking in",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Bright lights inside the store and blurred figures of students buying late-night snacks.",
+            "Frame Content": "Campus convenience store still lit at night, students buying items.",
+            "Background Crowd Size": "Few (1-5 people)",
+            "Shot Meaning": "Nighttime energy supply station, convenience extends into the night."
+        },
+        # --- Seasons and Special Scenes ---
+        {
+            "Scene": "Campus flowerbed in spring",
+            "Angle": "Low angle macro",
+            "Distance": "Extreme close-up (flowers)",
+            "Camera Movement": "Slow orbit around a flower or move upwards. Focus: Blooming flowers, bees and butterflies flitting among them.",
+            "Frame Content": "Blooming flowers in a spring flowerbed, blurred teaching building or lawn in the background.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Spring vitality, the campus's life and energy."
+        },
+        {
+            "Scene": "Cicadas on a tree-lined path in summer",
+            "Angle": "Low angle shot of tree canopy",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot, focus on swaying leaves. Focus: Dappled light filtering through leaves, accompanied by cicada sounds.",
+            "Frame Content": "Dense summer foliage, dappled sunlight, clear cicada chirping can be heard.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Summer heat and campus tranquility, unique seasonal memories."
+        },
+        {
+            "Scene": "Autumn avenue of fallen leaves",
+            "Angle": "Low angle, sweeping shot",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow sweep across the ground. Focus: Ground covered in golden fallen leaves, a few pairs of feet rustling through them.",
+            "Frame Content": "Golden fallen leaves cover a path, a few pairs of feet walk by, stirring up leaves.",
+            "Background Crowd Size": "Few (feet only)",
+            "Shot Meaning": "Autumn romance and poetry, the passage of time."
+        },
+        {
+            "Scene": "Campus after snow in winter",
+            "Angle": "High angle shot",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow tilt down. Focus: From snow-covered rooftops, slowly moves to footprints left by students in the snow.",
+            "Frame Content": "Campus is a blanket of white after snow, rooftops, branches, and ground covered, with a few sets of footprints.",
+            "Background Crowd Size": "0 people (or distant blurred figures)",
+            "Shot Meaning": "Winter purity and serenity, unique campus scenery."
+        },
+        {
+            "Scene": "Signature wall/banner during graduation season",
+            "Angle": "Eye-level",
+            "Distance": "Medium close-up",
+            "Camera Movement": "Slow pan. Focus: Densely packed signatures and well wishes on the wall or banner.",
+            "Frame Content": "Wall or banner covered with graduates' signatures, various fonts and messages.",
+            "Background Crowd Size": "0 people (or a few blurred figures in the distance)",
+            "Shot Meaning": "Marks of graduation, youthful memories and the sorrow of parting."
+        },
+        {
+            "Scene": "Empty chairs at a graduation ceremony",
+            "Angle": "Eye-level",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow push-in. Focus: Pushing in from the back row of empty chairs towards the empty podium on stage.",
+            "Frame Content": "After the ceremony, neatly arranged but empty chairs in the venue.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The end of the event, the end of a stage, the beginning of a new journey."
+        },
+        {
+            "Scene": "Welcome banner for new students",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: A welcome banner fluttering in the wind, with slogans welcoming new students.",
+            "Frame Content": "Banners on campus saying 'Welcome New Students,' swaying slightly in the wind.",
+            "Background Crowd Size": "0 people (or distant blurred crowd)",
+            "Shot Meaning": "The start of a new semester, full of anticipation and hope."
+        },
+        {
+            "Scene": "Outside a classroom after an exam",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Blurred figures of students chatting as they walk out, and scattered draft papers on the floor.",
+            "Frame Content": "Students walking out of the classroom, various expressions (blurred), possibly discarded draft papers on the floor.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "The end of a test, relief or slight tension."
+        },
+        {
+            "Scene": "School emblem/name stone at the main gate",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Close-up",
+            "Camera Movement": "Slow rise. Focus: From the bottom details of the emblem/stone, gradually revealing its entirety against the sky.",
+            "Frame Content": "School emblem or stone carved with the school name under sunlight, solemn and sacred.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Symbol of the school, a sense of belonging and pride."
+        },
+        {
+            "Scene": "Campus path in the rain",
+            "Angle": "Looking out through a window with raindrops",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Raindrops sliding down the window, blurring the figures of people walking with umbrellas outside.",
+            "Frame Content": "Raindrops on glass, students with colorful umbrellas hurry past outside.",
+            "Background Crowd Size": "Some (5-15 people)",
+            "Shot Meaning": "Campus in the rain, a different kind of scenery and atmosphere."
+        },
+        {
+            "Scene": "Bicycle parking area",
+            "Angle": "Eye-level, slightly looking down",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow pan. Focus: Rows of various bicycles, from old to new.",
+            "Frame Content": "Densely parked bicycles, forming a unique landscape.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Unique campus transportation, footprints of youth."
+        },
+        {
+            "Scene": "Small potted plant on a dormitory windowsill",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, focus on the plant. Focus: A small, vibrant green plant, with a blurred dormitory interior or view outside in the background.",
+            "Frame Content": "A small potted plant on a windowsill, full of life.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Small joys in dormitory life, a love for life."
+        },
+        {
+            "Scene": "Bulletin board",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow sweep from left to right. Focus: Various posters, notices, and lost-and-found ads on the bulletin board.",
+            "Frame Content": "Bulletin board covered with various information, colorful.",
+            "Background Crowd Size": "0 people (or a few blurred figures pausing to look)",
+            "Shot Meaning": "Campus information hub, announcements of rich and colorful campus activities."
+        },
+        {
+            "Scene": "Water room / Public washroom",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: A row of running taps, water gushing, or students' backs while washing up.",
+            "Frame Content": "Morning or evening, students queuing to get water or wash up (no faces).",
+            "Background Crowd Size": "Some (5-10 people)",
+            "Shot Meaning": "Daily routine of communal living, simple and real."
+        },
+        # --- More Details and Atmosphere ---
+        {
+            "Scene": "Old book section in the library",
+            "Angle": "Eye-level, slightly looking up",
+            "Distance": "Medium close-up",
+            "Camera Movement": "Slow push-in deep into the bookshelves. Focus: Dusty old book spines, and a hand pulling out a book.",
+            "Frame Content": "Rows of slightly old books, exuding the scent of ink, a hand searching among them.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "The sedimentation of history, the weight of knowledge."
+        },
+        {
+            "Scene": "Windowsill in a teaching building corridor",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, gentle breeze. Focus: A forgotten pen or an open book on the windowsill, curtain gently fluttering.",
+            "Frame Content": "A book or pen on the windowsill, possibly left behind by a student in a hurry.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "An unintentional moment, traces of study."
+        },
+        {
+            "Scene": "Campus tuck shop / Print shop",
+            "Angle": "Eye-level from entrance",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Students queuing to print materials or buy items (blurred).",
+            "Frame Content": "Students copying materials at a print shop, or buying stationery/snacks at a tuck shop.",
+            "Background Crowd Size": "Some (5-10 people)",
+            "Shot Meaning": "Service points for study and life, campus convenience."
+        },
+        {
+            "Scene": "Badminton court in the gymnasium",
+            "Angle": "Low angle near the net",
+            "Distance": "Medium shot",
+            "Camera Movement": "Quick pans left and right. Focus: Shuttlecock flying back and forth, and blurred arms swinging rackets.",
+            "Frame Content": "Shuttlecock flying rapidly in the air, silhouettes of students hitting it with rackets.",
+            "Background Crowd Size": "Few (2-4 people)",
+            "Shot Meaning": "The joy of sports, agility and vitality."
+        },
+        {
+            "Scene": "Vending machine near dormitory",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: A hand inserting coins/scanning a code, selecting an item, item dropping into the collection slot.",
+            "Frame Content": "Student buying a drink or snack from a vending machine (hand operation).",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "Convenient lifestyle, satisfying instant needs."
+        },
+        {
+            "Scene": "Campus pondside",
+            "Angle": "Water-level shot",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Reflections on the water surface (trees, buildings), occasionally a leaf floats by.",
+            "Frame Content": "Calm pond surface reflecting surrounding scenery, possibly ducks or fish swimming by.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "A quiet corner of the campus, a touch of nature."
+        },
+        {
+            "Scene": "Audience at a party/lecture (after lights dim)",
+            "Angle": "Stage POV looking down",
+            "Distance": "Full shot",
+            "Camera Movement": "Static shot. Focus: A sea of lit mobile phone screens (or glow sticks).",
+            "Frame Content": "In the dark audience, many mobile phone screens are lit, forming a starry expanse.",
+            "Background Crowd Size": "Large crowd (50+ people)",
+            "Shot Meaning": "Collective resonance and participation, event atmosphere."
+        },
+        {
+            "Scene": "Outside dormitory windows after lights out",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Stars or the moon in the night sky, with the dormitory building silhouette in the foreground.",
+            "Frame Content": "Most windows of the dormitory building are dark, against a deep night sky with stars and moon.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Campus at night, serene and peaceful."
+        },
+        {
+            "Scene": "Rooftop (at dusk)",
+            "Angle": "Eye-level, looking out",
+            "Distance": "Long shot",
+            "Camera Movement": "Slow panoramic pan. Focus: Panning from one cluster of teaching buildings to the city skyline on the other side, with the sunset in between.",
+            "Frame Content": "View of the entire campus and distant city skyline from a teaching building rooftop, as the sun sets.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "An open view, contemplation and outlook for the future."
+        },
+        {
+            "Scene": "Dewdrops on a classroom window in the morning",
+            "Angle": "Macro",
+            "Distance": "Extreme close-up",
+            "Camera Movement": "Static shot, focus on dewdrops. Focus: Glistening dewdrops on leaves or window glass, reflecting tiny campus scenes.",
+            "Frame Content": "Glistening dewdrops on plant leaves or windows in the early morning.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Fresh morning, the beauty of small things."
+        },
+        {
+            "Scene": "Moment the class dismissal bell rings",
+            "Angle": "Eye-level from classroom back door",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Blurred motion of students quickly packing bags and standing up.",
+            "Frame Content": "Bell rings, students in the classroom start packing up, preparing to leave (no individuals highlighted).",
+            "Background Crowd Size": "Large crowd (50+ people)",
+            "Shot Meaning": "End of class, a brief moment of liberation and relaxation."
+        },
+        {
+            "Scene": "Footsteps pausing at the campus bulletin board",
+            "Angle": "Low angle",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: Several pairs of different style shoes stop in front of the bulletin board, then disperse.",
+            "Frame Content": "Several pairs of feet stop at the bulletin board, possibly reading information, then walk away.",
+            "Background Crowd Size": "Few (feet only)",
+            "Shot Meaning": "Information acquisition and the dynamics of campus life."
+        },
+        {
+            "Scene": "Puddle reflection on the ground after rain",
+            "Angle": "Low angle, looking down",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: Clear reflection of a teaching building or trees in a puddle, occasionally footsteps cause ripples.",
+            "Frame Content": "A puddle on the ground after rain, reflecting the sky and surrounding scenery.",
+            "Background Crowd Size": "0 people (or feet stepping through puddle)",
+            "Shot Meaning": "Freshness after rain, the beauty of a mirrored world."
+        },
+        {
+            "Scene": "Bubbling test tube in a laboratory",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, focus on the test tube. Focus: Bubbles or color changes from a chemical reaction in a test tube.",
+            "Frame Content": "A test tube or beaker on a lab bench undergoing a chemical reaction.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The wonder of science, the joy of exploration."
+        },
+        {
+            "Scene": "Dormitory communal washing machine",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, time-lapse. Focus: Washing machine drum rotating, water level changing, foam tumbling.",
+            "Frame Content": "Washing machine in operation, clothes tumbling visible through the glass door.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Daily routine of communal living, demonstration of self-care skills."
+        },
+        {
+            "Scene": "Shared bikes/e-bikes in a corner of the campus",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan. Focus: A row of brightly colored shared bikes, occasionally someone scans and rides one away (blurred figure).",
+            "Frame Content": "Several shared bikes neatly parked, or a student scanning and riding one away.",
+            "Background Crowd Size": "0-1 person (blurred figure)",
+            "Shot Meaning": "Convenient campus transportation, flowing youth."
+        },
+        {
+            "Scene": "Library checkout counter",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: Books being scanned, stamped, and handed to a student's hand (no face).",
+            "Frame Content": "Librarian or student operating a self-service checkout machine to borrow books.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "Acquisition of knowledge, the beginning of reading."
+        },
+        {
+            "Scene": "Cafeteria serving ladle",
+            "Angle": "Low angle (from tray perspective)",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: Cafeteria staff using a large ladle to serve dishes onto a tray.",
+            "Frame Content": "Large ladle scooping various dishes and placing them onto a tray.",
+            "Background Crowd Size": "0-1 person (hands and ladle only)",
+            "Shot Meaning": "Campus food culture, simple satisfaction."
+        },
+        {
+            "Scene": "Long-distance running team at a sports meet",
+            "Angle": "Side view, tracking",
+            "Distance": "Full shot",
+            "Camera Movement": "Tracking shot parallel to the team at the same speed. Focus: A large group of running students forming a flowing line (distant, no individuals highlighted).",
+            "Frame Content": "At a sports meet, a long-distance running team stretches along the track, with blurred cheering crowdsริมสนาม.",
+            "Background Crowd Size": "Large crowd (50+ people)",
+            "Shot Meaning": "Collective effort and endurance, sportsmanship."
+        },
+        {
+            "Scene": "Stage lights at a welcome party",
+            "Angle": "Low angle from back of audience, looking up",
+            "Distance": "Full shot",
+            "Camera Movement": "Slow tilt up. Focus: Sweeping up from the edge of the stage to the changing beams of stage lights.",
+            "Frame Content": "Brilliant stage lights interweave and change in the air, possibly blurred silhouettes of performers on stage.",
+            "Background Crowd Size": "Few (blurred figures on stage)",
+            "Shot Meaning": "Youthful vitality and talent showcase, highlights of the event."
+        },
+        {
+            "Scene": "Construction fence on campus",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Signs on the fence like 'Sorry for the inconvenience during construction,' or a glimpse of the construction site through a gap.",
+            "Frame Content": "An area of the campus fenced off for construction, with safety warnings for pedestrians.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Campus development and change, an ever-updating environment."
+        },
+        {
+            "Scene": "Figure waiting for takeout delivery downstairs from a dorm",
+            "Angle": "Distant eye-level",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot. Focus: A blurred figure pacing downstairs, occasionally checking their phone, then receiving something from a delivery person.",
+            "Frame Content": "At night, a student waits for takeout delivery downstairs from a dorm, a delivery person arrives on a bike.",
+            "Background Crowd Size": "1-2 people (blurred)",
+            "Shot Meaning": "Part of modern convenient life, nighttime anticipation."
+        },
+        {
+            "Scene": "Rehearsal in an empty auditorium",
+            "Angle": "High angle from the rear, looking down",
+            "Distance": "Full shot",
+            "Camera Movement": "Static shot. Focus: Blurred figures of a few students rehearsing dance or drama on stage, sound echoing in the empty auditorium.",
+            "Frame Content": "A few students rehearsing on the stage of an empty auditorium, informal formations or simple movements.",
+            "Background Crowd Size": "Few (1-5 people)",
+            "Shot Meaning": "Behind-the-scenes effort and dedication, preparing for a great performance."
+        },
+        {
+            "Scene": "Library closing music plays",
+            "Angle": "Sweeping shot of reading area",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan. Focus: Backs of students successively closing books, packing up, and getting up to leave.",
+            "Frame Content": "Closing music plays, students begin to pack their belongings, preparing to leave the library.",
+            "Background Crowd Size": "Moderate (15-30 people)",
+            "Shot Meaning": "End of a day of study, regular routine."
+        },
+        {
+            "Scene": "Macro shot of campus plants (leaf veins/stamen)",
+            "Angle": "Macro",
+            "Distance": "Extreme close-up",
+            "Camera Movement": "Static shot or very slow push-in. Focus: Texture of leaf veins, details of stamen.",
+            "Frame Content": "Clear veins of a plant leaf under sunlight, or the stamen in the center of a flower.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The beauty of nature, the delicacy of the microscopic world."
+        },
+        {
+            "Scene": "Corridor motion-sensor light turning on and off",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Footsteps approach, sensor light turns on illuminating a short section of corridor, footsteps recede, light turns off.",
+            "Frame Content": "Quiet corridor, light turns on due to footsteps, then returns to darkness.",
+            "Background Crowd Size": "0 people (implied by sound only)",
+            "Shot Meaning": "Nighttime silence momentarily broken, traces of life."
+        },
+        {
+            "Scene": "Students waiting at a campus bus stop",
+            "Angle": "Side eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Backs of a few students queuing or scattered while waiting under a bus stop sign, a vehicle approaches.",
+            "Frame Content": "Students waiting at a campus bus stop, a campus bus or public bus slowly pulls in.",
+            "Background Crowd Size": "Some (5-10 people)",
+            "Shot Meaning": "Transportation connecting campus to the outside, daily commute."
+        },
+        {
+            "Scene": "Drying quilts in the sun (perfect sunlight)",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Several quilts drying in the sun, exuding the 'smell of sunshine'.",
+            "Frame Content": "Dormitory balcony or public drying area, several quilts drying in the sun, looking fluffy and warm.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "A pleasant weekend, small happiness in life."
+        },
+        {
+            "Scene": "Pile of discarded desks and chairs",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow pan. Focus: Pile of old desks and chairs, possibly with graffiti or carvings.",
+            "Frame Content": "A pile of discarded desks and chairs in a corner of the campus, showing signs of age.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The passage of time, replacement of items, carriers of memory."
+        },
+        {
+            "Scene": "Morning reading by the lake/under a tree",
+            "Angle": "From the side rear",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: A blurred back or side profile of someone reading aloud from a book, with the morning lake or green trees in the background.",
+            "Frame Content": "In the early morning, a student reads or recites from a book in a quiet corner (no front view).",
+            "Background Crowd Size": "1 person (blurred)",
+            "Shot Meaning": "A diligent morning, an atmosphere of pursuing knowledge."
+        },
+        {
+            "Scene": "Student union office (when empty)",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow sweep. Focus: Piles of documents, event proposals, computers on desks, event photos on the wall.",
+            "Frame Content": "Student union office, work items scattered on desks, indicating previous busyness.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "A glimpse of student work, a place of service and dedication."
+        },
+        {
+            "Scene": "Campus cat/dog strolling leisurely",
+            "Angle": "Low angle, following",
+            "Distance": "Close-up",
+            "Camera Movement": "Slow follow. Focus: A cat or dog leisurely walking, sunbathing, or interacting vaguely with students (e.g., being petted).",
+            "Frame Content": "A cute campus cat or dog walking on the grass or resting.",
+            "Background Crowd Size": "0 people (or distant blurred figures)",
+            "Shot Meaning": "Little creatures on campus, adding warmth and harmony."
+        },
+        {
+            "Scene": "Clock on a teaching building (approaching the hour)",
+            "Angle": "Low angle shot (looking up)",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, close-up on the clock face. Focus: Second hand ticking towards the hour, minute and hour hands moving slightly.",
+            "Frame Content": "Large clock on the exterior wall of a teaching building, hands slowly moving, about to reach the hour.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The passage of time, a reminder of regular schedules."
+        },
+        {
+            "Scene": "Sports equipment from PE class (basketballs, footballs, volleyballs scattered)",
+            "Angle": "Low eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Various balls and sports equipment scattered on the field after PE class.",
+            "Frame Content": "After PE class, basketballs, footballs, volleyballs, etc., scattered on the playground or gym floor.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The scene after exercise, lingering warmth of youthful energy."
+        },
+        {
+            "Scene": "Group of succulent plants on a dormitory windowsill",
+            "Angle": "Eye-level macro",
+            "Distance": "Close-up",
+            "Camera Movement": "Slow pan across. Focus: A row of differently shaped succulent plants, looking plump and cute in the sunlight.",
+            "Frame Content": "Several small, cute succulent plants on a dormitory windowsill.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Small pleasures of dorm life, a yearning for beauty."
+        },
+        {
+            "Scene": "Campus directional sign",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot, sharp focus. Focus: Directions and names like 'Teaching Building,' 'Library,' 'Gymnasium' on the signpost.",
+            "Frame Content": "A clear campus directional sign, indicating directions to different buildings.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Campus guidance, a clear sense of direction."
+        },
+        {
+            "Scene": "Falling confetti or balloons at opening/graduation ceremony",
+            "Angle": "Low angle, looking up",
+            "Distance": "Medium shot",
+            "Camera Movement": "Slow tilt up. Focus: From above blurred crowd heads, capturing colorful confetti falling or balloons rising.",
+            "Frame Content": "During a celebration, colorful confetti falls from the sky, or balloons slowly rise.",
+            "Background Crowd Size": "Large crowd (blurred background)",
+            "Shot Meaning": "Joy and climax of a celebration, launching hopes and dreams."
+        },
+        {
+            "Scene": "Moths fluttering under a streetlight at night",
+            "Angle": "Low angle shot of streetlight",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Moths or other small insects gathered around a streetlight.",
+            "Frame Content": "Streetlight is on at night, a few moths circle around the light.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Nighttime campus ecosystem, the existence of tiny lives."
+        },
+        {
+            "Scene": "Hand reading a book by a cafe window with coffee",
+            "Angle": "Overhead shot of table",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: A hand turning pages of a book, with a cup of coffee or tea nearby.",
+            "Frame Content": "An open book on a table, a hand turning a page, a drink beside it.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "Leisurely reading time, enjoying solitary tranquility."
+        },
+        {
+            "Scene": "Sound and sight of a fume hood operating in a lab",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: Apparatus for an experiment inside the fume hood (blurred), and the sound of the ventilation system working.",
+            "Frame Content": "Inside the glass door of a fume hood, an experiment is in progress, accompanied by machine operating sounds.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Daily routine of scientific research, safety measures."
+        },
+        {
+            "Scene": "Dormitory lights-out bell/announcement",
+            "Angle": "Exterior low angle shot of dormitory building",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot, time-lapse. Focus: As the lights-out bell or announcement sounds, dormitory lights gradually go out.",
+            "Frame Content": "At night, dormitory lights extinguish in sections, accompanied by a bell or broadcast announcement.",
+            "Background Crowd Size": "0 people (primarily architecture)",
+            "Shot Meaning": "Signal for the end of a regular schedule, campus enters night mode."
+        },
+        {
+            "Scene": "Moment of throwing graduation caps (low angle shot)",
+            "Angle": "Extreme low angle shot",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: Countless graduation caps tossed into the sky, creating a unique image.",
+            "Frame Content": "At a graduation ceremony, students toss their graduation caps into the air together.",
+            "Background Crowd Size": "Large crowd (caps and sky only)",
+            "Shot Meaning": "Joy and release of graduation, soaring youth."
+        },
+        {
+            "Scene": "Public water dispenser on campus",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Static shot. Focus: A hand holding a cup, filling it at a water dispenser.",
+            "Frame Content": "Student filling a cup with water at a public water dispenser.",
+            "Background Crowd Size": "0-1 person (hands only)",
+            "Shot Meaning": "Convenient campus facility, a moment of quenching thirst."
+        },
+        {
+            "Scene": "Classroom projector screen slowly rising/lowering",
+            "Angle": "Eye-level",
+            "Distance": "Medium shot",
+            "Camera Movement": "Static shot. Focus: The edge of the projector screen, and its rising or lowering motion.",
+            "Frame Content": "Before or after class, the projector screen in a classroom automatically rises or lowers.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "The beginning or end of a class, use of modern teaching equipment."
+        },
+        {
+            "Scene": "View from library floor-to-ceiling window (seasonal changes)",
+            "Angle": "Indoor eye-level looking out",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot, can be combined with time-lapse to show seasonal changes. Focus: Trees outside the window changing from green to yellow, shedding leaves, accumulating snow, budding.",
+            "Frame Content": "Looking out from a quiet library floor-to-ceiling window, campus scenery changes with the seasons.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Time flies, the beauty of campus seasons, tranquility of the study environment."
+        },
+        {
+            "Scene": "Empty basketball court at night",
+            "Angle": "Medium eye-level",
+            "Distance": "Full shot",
+            "Camera Movement": "Static shot, or very slow pan. Focus: Empty court and hoop illuminated by moonlight or streetlights.",
+            "Frame Content": "At night, an empty basketball court illuminated only by lights, appearing exceptionally quiet.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Silence after the bustle, awaiting tomorrow's vitality."
+        },
+        {
+            "Scene": "Exhibits at a student art exhibition",
+            "Angle": "Eye-level or multi-angle detail shots",
+            "Distance": "Close-up / Extreme close-up",
+            "Camera Movement": "Slow move around or push/pull on the exhibit. Focus: Details and overall view of paintings, sculptures, photography, etc.",
+            "Frame Content": "Student artworks displayed in an exhibition hall, such as brushstrokes of a painting, form of a sculpture.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Showcase of student creativity and artistic talent."
+        },
+        {
+            "Scene": "Items in a campus souvenir shop",
+            "Angle": "Eye-level",
+            "Distance": "Close-up",
+            "Camera Movement": "Slow sweep over shelves. Focus: T-shirts, mugs, stationery, etc., with the school emblem.",
+            "Frame Content": "Various items with the school logo displayed in a campus souvenir shop.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Identification with alma mater and commemorative significance."
+        },
+        {
+            "Scene": "Silhouette of a teaching building in the dawn light",
+            "Angle": "Long shot, eye-level or low angle",
+            "Distance": "Long shot",
+            "Camera Movement": "Static shot. Focus: Sky gradually brightens, the dark silhouette of the teaching building becomes clearer in the dawn light.",
+            "Frame Content": "Before sunrise, the sky is slightly bright, teaching buildings and other structures present clear silhouettes.",
+            "Background Crowd Size": "0 people",
+            "Shot Meaning": "Prelude to a new day, a solemn academic atmosphere."
+        }
+    ]
 }

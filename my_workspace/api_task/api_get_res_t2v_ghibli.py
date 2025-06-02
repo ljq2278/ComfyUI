@@ -5,7 +5,7 @@ import os
 import random
 import traceback
 import requests
-from my_workspace.shots.bg_shots.content import bg_shots_all
+from my_workspace.shot.bg_shot.content import bg_shots_all
 import platform
 
 os.environ['http_proxy'] = ''

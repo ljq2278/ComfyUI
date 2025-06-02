@@ -5,7 +5,7 @@ import random
 import traceback
 import os
 import platform
-from my_workspace.shot.role_shot.scene import mv_scenes_campus
+from my_workspace.shot.role_shot.scene import mv_scenes_all
 from my_workspace.shot.role_shot.content import role_shots_all
 from my_workspace.shot.role_shot.cloth import clothing_prompts_female
 from my_workspace.shot.role_shot.camera import camera_motion_prompts, camera_orientation_prompts
@@ -29,6 +29,7 @@ def is_windows():
         print(f"当前操作系统为 {os_name}")
         return False
 
+exp_nm = "campus"
 
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
 COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:8190"
@@ -37,7 +38,6 @@ process_time = 90 if  is_windows() else 120
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/参考生视频_api.json"  # 你的工作流API格式文件
 INPUT_IMAGE_PATH = COMFYUI_PATH+"/output/material/role_image"
 OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/material/role_shot"
-# OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/role_shots/campus"
 
 
 def queue_prompt(prompt_workflow):
@@ -79,7 +79,7 @@ with open(WORKFLOW_API_JSON_FILE, 'r', encoding="utf-8") as f:
 iter_tt = 200
 cont = 0
 for it_cnt in range(0, iter_tt):
-    mv_shots = [(i, v) for i, v in enumerate(role_shots_all["campus"])]
+    mv_shots = [(i, v) for i, v in enumerate(role_shots_all[exp_nm])]
     random.shuffle(mv_shots)
     for content_ind, itm in mv_shots:
         try:
@@ -92,10 +92,9 @@ for it_cnt in range(0, iter_tt):
             cloth_content = clothing_prompts_female[cloth_ind]
             prompt_dct["少女"] += cloth_content
 
-            scene_ind = int(random.random()*len(mv_scenes_campus))
-            scene_content = mv_scenes_campus[scene_ind]
+            scene_ind = int(random.random()*len(mv_scenes_all[exp_nm]))
+            scene_content = mv_scenes_all[exp_nm][scene_ind]
             prompt_dct.update(scene_content)
-
             
             prompt_dct.update({k: v for k, v in itm.items() if k != "id" and k != "镜头含义"})
             camera_motion_id = int(random.random()*len(camera_motion_prompts))
@@ -110,7 +109,7 @@ for it_cnt in range(0, iter_tt):
             # prompt_dct["场景"] = "课堂"
             # prompt_dct["动作"] = "边笑边画画"
             
-            file_name_prefix = f"""campus_场景_{scene_ind}_内容_{content_ind}_表情_{expression_id}"""
+            file_name_prefix = f"""{exp_nm}_场景#{scene_ind}_内容#{content_ind}_表情#{expression_id}"""
             current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
             kwargs = {
                 "ref_img": os.path.join(INPUT_IMAGE_PATH, os.listdir(INPUT_IMAGE_PATH)[int(random.random()*len(os.listdir(INPUT_IMAGE_PATH)))]),

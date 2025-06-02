@@ -1,8 +1,8 @@
 {
   "id": "35c38ea3-0024-49f0-bc47-1cfbc034f468",
   "revision": 0,
-  "last_node_id": 56,
-  "last_link_id": 104,
+  "last_node_id": 58,
+  "last_link_id": 105,
   "nodes": [
     {
       "id": 8,
@@ -16,7 +16,7 @@
         46
       ],
       "flags": {},
-      "order": 7,
+      "order": 8,
       "mode": 0,
       "inputs": [
         {
@@ -59,7 +59,7 @@
         1007.9299926757812
       ],
       "flags": {},
-      "order": 8,
+      "order": 9,
       "mode": 0,
       "inputs": [
         {
@@ -89,7 +89,7 @@
         262
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -129,7 +129,7 @@
         "Node name for S&R": "KSampler"
       },
       "widgets_values": [
-        713427013494816,
+        350599308399208,
         "randomize",
         20,
         4.01,
@@ -137,29 +137,6 @@
         "sgm_uniform",
         1
       ]
-    },
-    {
-      "id": 54,
-      "type": "MarkdownNote",
-      "pos": [
-        -45,
-        240
-      ],
-      "size": [
-        225,
-        88
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [],
-      "properties": {},
-      "widgets_values": [
-        "🛈 [Learn more about this workflow](https://comfyanonymous.github.io/ComfyUI_examples/sd3/#sd35)"
-      ],
-      "color": "#432",
-      "bgcolor": "#653"
     },
     {
       "id": 40,
@@ -173,7 +150,7 @@
         192
       ],
       "flags": {},
-      "order": 5,
+      "order": 6,
       "mode": 0,
       "inputs": [
         {
@@ -199,24 +176,127 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "low quality, blurry, bad anatomy, distorted, deformed, extra limbs, missing limbs, unnatural proportions, poorly drawn face, asymmetry, low contrast, low resolution, artifacts, noise, watermark, text, jpeg artifacts, mutated hands, bad fingers, bad hands, bad feet, disfigured, cropped, worst quality, signature, writing, error, wrong perspective, unnatural lighting, overly saturated, weird eyes, unnatural expression, cloned face, overexposed, underexposed."
+        "low quality, blurry, bad anatomy, distorted, deformed, extra limbs, missing limbs, unnatural proportions, poorly drawn face, asymmetry, low contrast, low resolution, artifacts, noise, watermark, text, jpeg artifacts, mutated hands, bad fingers, bad hands, bad feet, disfigured, cropped, worst quality, signature, writing, error, wrong perspective, unnatural lighting, overly saturated, weird eyes, unnatural expression, cloned face, overexposed, underexposed.",
+        [
+          false,
+          true
+        ]
       ],
       "color": "#322",
       "bgcolor": "#533"
     },
     {
+      "id": 53,
+      "type": "EmptySD3LatentImage",
+      "pos": [
+        480,
+        576
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "slot_index": 0,
+          "links": [
+            100
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "EmptySD3LatentImage"
+      },
+      "widgets_values": [
+        1200,
+        720,
+        1
+      ]
+    },
+    {
+      "id": 54,
+      "type": "MarkdownNote",
+      "pos": [
+        -71.53507995605469,
+        449.09649658203125
+      ],
+      "size": [
+        225,
+        88
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": [
+        "🛈 [Learn more about this workflow](https://comfyanonymous.github.io/ComfyUI_examples/sd3/#sd35)"
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 55,
+      "type": "LoraLoaderModelOnly",
+      "pos": [
+        449.2105712890625,
+        -117.48091125488281
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 103
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            104
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "LoraLoaderModelOnly"
+      },
+      "widgets_values": [
+        "animemix_v3_offset.safetensors",
+        1
+      ]
+    },
+    {
       "id": 4,
       "type": "CheckpointLoaderSimple",
       "pos": [
-        -109.40351104736328,
-        95.12281036376953
+        -95.60527801513672,
+        263.8859558105469
       ],
       "size": [
         384.760009765625,
         98
       ],
       "flags": {},
-      "order": 1,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -252,83 +332,44 @@
         "Node name for S&R": "CheckpointLoaderSimple"
       },
       "widgets_values": [
-        "darksushi225D.fUnW.safetensors"
+        "anythingV3_fp16.safetensors"
       ]
     },
     {
-      "id": 55,
-      "type": "LoraLoaderModelOnly",
+      "id": 58,
+      "type": "ArgosTranslateTextNode",
       "pos": [
-        444.38604736328125,
-        -68.27037048339844
+        -152.75743103027344,
+        -107.9433364868164
       ],
       "size": [
-        270,
-        82
+        399.03509521484375,
+        300.35089111328125
       ],
       "flags": {},
       "order": 3,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 103
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            104
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "LoraLoaderModelOnly"
-      },
-      "widgets_values": [
-        "animemix_v3_offset.safetensors",
-        1
-      ]
-    },
-    {
-      "id": 53,
-      "type": "EmptySD3LatentImage",
-      "pos": [
-        480,
-        576
-      ],
-      "size": [
-        315,
-        106
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
+      "mode": 4,
       "inputs": [],
       "outputs": [
         {
-          "name": "LATENT",
-          "type": "LATENT",
-          "slot_index": 0,
-          "links": [
-            100
-          ]
+          "name": "text",
+          "type": "STRING",
+          "links": []
         }
       ],
       "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "EmptySD3LatentImage"
+        "cnr_id": "comfyui_custom_nodes_alekpet",
+        "ver": "1.0.68",
+        "Node name for S&R": "ArgosTranslateTextNode"
       },
       "widgets_values": [
-        1200,
-        720,
-        1
+        "chinese",
+        "english",
+        "        {\n            \"拍摄场景\": \"校园书店里翻阅书籍的手\",\n            \"角度\": \"过肩\",\n            \"镜头距离\": \"近景 (书和手)\",\n            \"运镜\": {\"类型\": \"固定\", \"关注焦点\": \"手指翻动书页的动作和书本内容\", \"移动变化\": \"无\"},\n            \"画面内容\": \"在书店书架旁，一双手捧着一本书，手指轻轻翻动书页，能看到部分书页内容。\",\n            \"背景人群数量\": \"少 (旁边模糊的其他读者或书架)\",\n            \"镜头含义\": \"阅读的乐趣，知识的探索。\"\n        },\n\"风格\": \"现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。\",\n",
+        [
+          false,
+          true
+        ]
       ]
     },
     {
@@ -343,7 +384,7 @@
         192
       ],
       "flags": {},
-      "order": 4,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
@@ -369,7 +410,11 @@
         "Node name for S&R": "CLIPTextEncode"
       },
       "widgets_values": [
-        "        {\n            \"拍摄场景\": \"校园书店里翻阅书籍的手\",\n            \"角度\": \"过肩\",\n            \"镜头距离\": \"近景 (书和手)\",\n            \"运镜\": {\"类型\": \"固定\", \"关注焦点\": \"手指翻动书页的动作和书本内容\", \"移动变化\": \"无\"},\n            \"画面内容\": \"在书店书架旁，一双手捧着一本书，手指轻轻翻动书页，能看到部分书页内容。\",\n            \"背景人群数量\": \"少 (旁边模糊的其他读者或书架)\",\n            \"镜头含义\": \"阅读的乐趣，知识的探索。\"\n        },itchen with a window to the outdoors mountain range bright sun clouds forest\n\"风格\": \"现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。\",\n"
+        " {\n            \"Scene\": \"Playground at dawn\",\n            \"Angle\": \"Low angle shot\",\n            \"Distance\": \"Long shot\",\n            \"Camera Movement\": \"Static shot. Focus: Horizontal bar or basketball hoop in the dawn light, gradually illuminated by sunlight.\",\n            \"Frame Content\": \"Empty horizontal bar or basketball hoop, distant mist, sunlight slowly spills down.\",\n            \"Background Crowd Size\": \"0 people\",\n            \"Shot Meaning\": \"A tranquil morning, the start of a new day, full of hope.\"\n        },\n\"Style\": \"Modern high-definition Ghibli animation style, delicate, clean, and bright hand-drawn aesthetics with clear lines and naturally vivid colors. Avoid excessive yellowing or dim tones, ensuring a gentle, transparent, and emotionally rich animation texture.\"\n",
+        [
+          false,
+          true
+        ]
       ],
       "color": "#232",
       "bgcolor": "#353"
@@ -461,10 +506,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.9421487603305803,
+      "scale": 1.0363636363636386,
       "offset": [
-        17.233948792951196,
-        239.37808740348157
+        270.7187687146567,
+        100.56317193298717
       ]
     },
     "frontendVersion": "1.20.4",
