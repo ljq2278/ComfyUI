@@ -35,8 +35,8 @@ COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:819
 process_time = 90 if  is_windows() else 120
 
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/参考生视频_api.json"  # 你的工作流API格式文件
-INPUT_IMAGE_PATH = COMFYUI_PATH+"/my_workspace/material/role_image"
-OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/my_workspace/material/role_shot"
+INPUT_IMAGE_PATH = COMFYUI_PATH+"/output/material/role_image"
+OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/material/role_shot"
 # OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/role_shots/campus"
 
 
@@ -81,7 +81,7 @@ cont = 0
 for it_cnt in range(0, iter_tt):
     mv_shots = [(i, v) for i, v in enumerate(role_shots_all["campus"])]
     random.shuffle(mv_shots)
-    for act_ind, itm in mv_shots:
+    for content_ind, itm in mv_shots:
         try:
             prompt_dct = {
                 "风格": "现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。",
@@ -96,15 +96,21 @@ for it_cnt in range(0, iter_tt):
             scene_content = mv_scenes_campus[scene_ind]
             prompt_dct.update(scene_content)
 
-            file_name_prefix = f"""{act_ind}_{cloth_ind}_{scene_ind}"""
+            
             prompt_dct.update({k: v for k, v in itm.items() if k != "id" and k != "镜头含义"})
-            prompt_dct["运镜"] = camera_motion_prompts[int(random.random()*len(camera_motion_prompts))]
-            prompt_dct["范围"] = frame_range_prompts[int(random.random()*len(frame_range_prompts))]
-            prompt_dct["角度"] = camera_orientation_prompts[int(random.random()*3)] + " and then " + camera_orientation_prompts[int(random.random()*len(camera_orientation_prompts))]
-            prompt_dct["表情"] = expression_prompts[int(random.random()*len(expression_prompts))]
+            camera_motion_id = int(random.random()*len(camera_motion_prompts))
+            prompt_dct["运镜"] = camera_motion_prompts[camera_motion_id]
+            camera_orientation_id = int(random.random()*len(camera_orientation_prompts))
+            prompt_dct["角度"] = camera_orientation_prompts[camera_orientation_id]
+            # prompt_dct["角度"] = camera_orientation_prompts[int(random.random()*3)] + " and then " + camera_orientation_prompts[int(random.random()*len(camera_orientation_prompts))]
+            range_id = int(random.random()*len(frame_range_prompts))
+            prompt_dct["范围"] = frame_range_prompts[range_id]
+            expression_id = int(random.random()*len(expression_prompts))
+            prompt_dct["表情"] = expression_prompts[expression_id]
             # prompt_dct["场景"] = "课堂"
             # prompt_dct["动作"] = "边笑边画画"
             
+            file_name_prefix = f"""campus_场景_{scene_ind}_内容_{content_ind}_表情_{expression_id}"""
             current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
             kwargs = {
                 "ref_img": os.path.join(INPUT_IMAGE_PATH, os.listdir(INPUT_IMAGE_PATH)[int(random.random()*len(os.listdir(INPUT_IMAGE_PATH)))]),

@@ -5,9 +5,6 @@ import random
 import traceback
 import os
 from my_workspace.shot.bg_shot.content import mv_shots_all
-# from my_workspace.materials.shots.scene import mv_scenes_campus
-# from my_workspace.materials.shots.act import mv_shots_new
-# from my_workspace.materials.shots.cloth import clothing_prompts_female
 import platform
 
 os.environ['http_proxy'] = ''
@@ -32,8 +29,8 @@ COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:819
 process_time = 90 if is_windows() else 120
 
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/comfy重要工作流/参考生视频_api.json"  # 你的工作流API格式文件
-INPUT_IMAGE_PATH = COMFYUI_PATH+"/my_workspace/material/bg_images"
-OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/my_workspace/material/bg_shots/campus"
+INPUT_IMAGE_PATH = COMFYUI_PATH+"/output/material/bg_images"
+OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/material/bg_shots/campus"
 
 
 def queue_prompt(prompt_workflow):
