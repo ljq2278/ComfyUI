@@ -26,4 +26,4 @@ filtered-openapi.yaml
 uv.lock
 /mv
 /my_workspace/material
-nohup.out
+*.out
