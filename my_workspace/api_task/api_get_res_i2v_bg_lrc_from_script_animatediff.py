@@ -14,8 +14,10 @@ def is_windows():
         logging.info(f"当前操作系统为 {os_name}")
         return False
 
+is_server_windows = True
+
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
-COMFYUI_URL = "http://2962e6ef.r29.cpolar.top/"
+COMFYUI_URL = "http://2962e6ef.r29.cpolar.top/" if is_server_windows else "http://127.0.0.1:8190"
 LRC_BASE_DIR = "f:/projects/auto_video/mv/data" if is_windows() else "/workspace/auto_video/mv/data"
 
 import os
@@ -61,9 +63,9 @@ for itm in bg_shots_all:
     for sub in itm["lyric"].split("\t"):
         if sub:
             mv_shots.append(sub)
+# WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
 WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
-# OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/material/bg_shot"
-OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/material/bg_shot"
+OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/material/bg_shot" if is_server_windows else "/workspace/ComfyUI/output/material/bg_shot"
 
 def queue_prompt(prompt_workflow):
     p = {"prompt": prompt_workflow}
@@ -115,7 +117,9 @@ async def main():
                 }
 
                 prompt_dct.update({"歌词": lyric})
-                prompt_prompt = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意要有更多的细节（其中主角是一个黄发蓝眼女孩），注重氛围的表达。以sd1.5的英文prompt的形式输出该画面描述(比如: "masterpiece, (1girl:1.2), young woman with nostalgic expression, wandering alone on a dimly lit urban street, old neon signs flickering in the background, soft warm glow from vintage street lamps, autumn leaves gently drifting in the air, light rain making the pavement shimmer, distant silhouettes of people lost in thought, sepia-toned atmosphere, melancholic yet hopeful gaze, slightly messy hair caught in the breeze, wearing a worn-out trench coat, subtle film grain effect, cinematic composition, atmospheric perspective")，不要有其他多余的输出"""
+                prompt_prompt = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意要有更多的细节：其中1、主角是一个黄色长发蓝眼女孩；2、要给出背景景物细节；3、人物范围要给出是脸部特写，还是半身，还是全身，还是远景；人物是侧身，还是正面，还是背面；给出人物表情；4、注重氛围的表达。5、给出运镜与摄像角度方式。以sd1.5的英文prompt的形式输出该画面描述，不要有其他多余的输出"""
+                example_prompt = f"""(masterpiece, best quality, ultra-detailed, cinematic lighting), medium shot, low angle, side view of a beautiful girl with long blonde hair, sleeping peacefully. She lies on a bed of glowing moss in an enchanted forest at twilight. Her expression is serene with a faint smile. The background is a dense, mystical forest with bioluminescent mushrooms, floating dust motes, and fireflies creating a soft glow. Ethereal and dreamlike atmosphere, soft focus, volumetric light filtering through the trees."""
+                prompt_prompt += "\n示例: "+example_prompt
                 think = ""
                 text = ""
                 async for delta in llm_cli.async_stream_chat(chat_content="", history=[], prompt=prompt_prompt, max_length=256 * 16, temperature=0.4, enable_thinking=True):
@@ -124,7 +128,7 @@ async def main():
                         think += delta["think"]
                     if "text" in delta:
                         text += delta["text"]
-                prompt_dct.update({"画面内容": text})
+                prompt_dct.update({"画面内容": "anime style, "+text})
                 camera_motion_id = int(random.random()*len(camera_motion_prompts))
                 prompt_dct["运镜"] = camera_motion_prompts[camera_motion_id]
 
