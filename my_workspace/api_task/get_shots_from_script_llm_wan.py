@@ -116,8 +116,8 @@ async def main():
                 }
 
                 prompt_dct.update({"歌词": lyric})
-                prompt_prompt = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意要有更多的细节：其中1、主角是一个黄色长发蓝眼女孩；2、要给出背景景物细节；3、人物范围要给出是脸部特写，还是半身，还是全身，还是远景；人物是侧身，还是正面，还是背面；给出人物表情；4、注重氛围的表达。5、给出运镜与摄像角度方式。以sd1.5的英文prompt的形式输出该画面描述，不要有其他多余的输出"""
-                example_prompt = f"""(masterpiece, best quality, ultra-detailed, cinematic lighting), medium shot, low angle, side view of a beautiful girl with long blonde hair, sleeping peacefully. She lies on a bed of glowing moss in an enchanted forest at twilight. Her expression is serene with a faint smile. The background is a dense, mystical forest with bioluminescent mushrooms, floating dust motes, and fireflies creating a soft glow. Ethereal and dreamlike atmosphere, soft focus, volumetric light filtering through the trees."""
+                prompt_prompt = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意要有更多的细节：其中1、主角是一个黄色长发蓝眼女孩；2、要给出背景景物细节；3、人物范围要给出是脸部特写，还是半身，还是全身，还是远景；人物是侧身，还是正面，还是背面；4、给出人物表情和动作；5、给出运镜与摄像角度方式；6、注重氛围的表达。以sd1.5的英文prompt（词语，词组）的形式输出该画面描述，不要有其他多余的输出"""
+                example_prompt = f"""(masterpiece, best quality, high detail), cinematic still, medium shot of a beautiful girl with long flowing blonde hair and blue eyes, sleeping peacefully, serene expression with a slight smile, she is lying on a bed of glowing moss and luminescent flowers in an enchanted forest at night, her hair fanned out around her head, ancient trees with soft moonlight filtering through the canopy, god rays, crepuscular rays, fireflies and glowing dust motes floating in the air, soft mist on the ground, ethereal and magical atmosphere, dreamlike, fantasy, high angle view looking down, slow dolly out."""
                 prompt_prompt += "\n示例: "+example_prompt
                 think = ""
                 text = ""
