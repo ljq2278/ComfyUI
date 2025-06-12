@@ -1,0 +1,602 @@
+{
+  "73": {
+    "inputs": {
+      "image": "09b768b0-bcf0-415d-a3ad-d4806ee48787.png"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "加载图像"
+    }
+  },
+  "105": {
+    "inputs": {
+      "text": "(masterpiece, best quality, ultra-detailed, cinematic lighting), medium shot, low angle, side view of a beautiful girl with long blonde hair, sleeping peacefully. She lies on a bed of glowing moss in an enchanted forest at twilight. Her expression is serene with a faint smile. The background is a dense, mystical forest with bioluminescent mushrooms, floating dust motes, and fireflies creating a soft glow. Ethereal and dreamlike atmosphere, soft focus, volumetric light filtering through the trees.",
+      "clip": [
+        "115",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "107": {
+    "inputs": {
+      "text": "过曝，静态，细节模糊不清，字幕，风格，作品，画作，画面，静止，整体发灰，最差质量，低质量，JPEG压缩残留，丑陋的，残缺的，多余的手指，画得不好的手部，画得不好的脸部，畸形的，毁容的，形态畸形的肢体，手指融合，静止不动的画面，杂乱的背景，三条腿，倒着走,",
+      "clip": [
+        "115",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "108": {
+    "inputs": {
+      "seed": 327802021166629,
+      "steps": 4,
+      "cfg": 1,
+      "sampler_name": "uni_pc",
+      "scheduler": "simple",
+      "denoise": 1,
+      "model": [
+        "110",
+        0
+      ],
+      "positive": [
+        "109",
+        0
+      ],
+      "negative": [
+        "109",
+        1
+      ],
+      "latent_image": [
+        "109",
+        2
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "109": {
+    "inputs": {
+      "width": 768,
+      "height": 432,
+      "length": [
+        "139",
+        0
+      ],
+      "batch_size": 1,
+      "strength": 0.5000000000000001,
+      "positive": [
+        "105",
+        0
+      ],
+      "negative": [
+        "107",
+        0
+      ],
+      "vae": [
+        "114",
+        0
+      ],
+      "reference_image": [
+        "164",
+        0
+      ]
+    },
+    "class_type": "WanVaceToVideo",
+    "_meta": {
+      "title": "WanVaceToVideo"
+    }
+  },
+  "110": {
+    "inputs": {
+      "shift": 8.000000000000002,
+      "model": [
+        "115",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "采样算法（SD3）"
+    }
+  },
+  "113": {
+    "inputs": {
+      "unet_name": "wan2.1_vace_14B_fp16.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "UNet加载器"
+    }
+  },
+  "114": {
+    "inputs": {
+      "vae_name": "wan_2.1_vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "115": {
+    "inputs": {
+      "lora_name": "Wan21_CausVid_14B_T2V_lora_rank32.safetensors",
+      "strength_model": 0.7000000000000002,
+      "strength_clip": 1,
+      "model": [
+        "163",
+        0
+      ],
+      "clip": [
+        "127",
+        0
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载LoRA"
+    }
+  },
+  "118": {
+    "inputs": {
+      "trim_amount": [
+        "109",
+        3
+      ],
+      "samples": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "TrimVideoLatent",
+    "_meta": {
+      "title": "TrimVideoLatent"
+    }
+  },
+  "119": {
+    "inputs": {
+      "samples": [
+        "118",
+        0
+      ],
+      "vae": [
+        "114",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "127": {
+    "inputs": {
+      "clip_name": "umt5_xxl_fp8_e4m3fn_scaled.safetensors",
+      "type": "wan",
+      "device": "default"
+    },
+    "class_type": "CLIPLoader",
+    "_meta": {
+      "title": "加载CLIP"
+    }
+  },
+  "139": {
+    "inputs": {
+      "value": 81
+    },
+    "class_type": "PrimitiveInt",
+    "_meta": {
+      "title": "Length"
+    }
+  },
+  "163": {
+    "inputs": {
+      "unet_name": "Wan2.1-VACE-14B-Q4_K_M.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  },
+  "164": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "batch_size": 1,
+      "color": 0
+    },
+    "class_type": "EmptyImage",
+    "_meta": {
+      "title": "空图像"
+    }
+  },
+  "165": {
+    "inputs": {
+      "context_length": 16,
+      "context_overlap": 4,
+      "fuse_method": "pyramid",
+      "use_on_equal_length": false,
+      "start_percent": 0,
+      "guarantee_steps": 1
+    },
+    "class_type": "ADE_StandardStaticContextOptions",
+    "_meta": {
+      "title": "Context Options◆Standard Static 🎭🅐🅓"
+    }
+  },
+  "166": {
+    "inputs": {
+      "batch_offset": 0,
+      "noise_type": "FreeNoise",
+      "seed_gen": "comfy",
+      "seed_offset": 0,
+      "adapt_denoise_steps": 0
+    },
+    "class_type": "ADE_AnimateDiffSamplingSettings",
+    "_meta": {
+      "title": "Sample Settings 🎭🅐🅓"
+    }
+  },
+  "167": {
+    "inputs": {
+      "vae_name": "vae-ft-mse-840000-ema-pruned.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "加载VAE"
+    }
+  },
+  "169": {
+    "inputs": {
+      "text": "(worst quality, low quality: 1.4)",
+      "clip": [
+        "178",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "170": {
+    "inputs": {
+      "images": [
+        "173",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "171": {
+    "inputs": {
+      "control_net_name": "control_v11p_sd15_lineart.pth",
+      "timestep_keyframe": [
+        "172",
+        1
+      ]
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
+    }
+  },
+  "172": {
+    "inputs": {
+      "base_multiplier": 0.8250000000000001,
+      "flip_weights": false,
+      "uncond_multiplier": 1
+    },
+    "class_type": "ScaledSoftControlNetWeights",
+    "_meta": {
+      "title": "Scaled Soft Weights 🛂🅐🅒🅝"
+    }
+  },
+  "173": {
+    "inputs": {
+      "coarse": "disable",
+      "resolution": 512,
+      "image": [
+        "194",
+        0
+      ]
+    },
+    "class_type": "LineArtPreprocessor",
+    "_meta": {
+      "title": "Realistic Lineart"
+    }
+  },
+  "176": {
+    "inputs": {
+      "width": 768,
+      "height": 432,
+      "batch_size": [
+        "194",
+        1
+      ]
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "空Latent图像"
+    }
+  },
+  "177": {
+    "inputs": {
+      "images": [
+        "194",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "预览图像"
+    }
+  },
+  "178": {
+    "inputs": {
+      "stop_at_clip_layer": -2,
+      "clip": [
+        "185",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "设置CLIP最后一层"
+    }
+  },
+  "179": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "192",
+        0
+      ],
+      "negative": [
+        "169",
+        0
+      ],
+      "control_net": [
+        "171",
+        0
+      ],
+      "image": [
+        "173",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "应用ControlNet（旧版高级）"
+    }
+  },
+  "180": {
+    "inputs": {
+      "model_name": "AnimateLCM_sd15_t2v.ckpt",
+      "beta_schedule": "autoselect",
+      "model": [
+        "185",
+        0
+      ],
+      "context_options": [
+        "165",
+        0
+      ],
+      "sample_settings": [
+        "166",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffLoaderGen1",
+    "_meta": {
+      "title": "AnimateDiff Loader 🎭🅐🅓①"
+    }
+  },
+  "181": {
+    "inputs": {
+      "seed": 44444444,
+      "steps": 4,
+      "cfg": 2,
+      "sampler_name": "lcm",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "180",
+        0
+      ],
+      "positive": [
+        "179",
+        0
+      ],
+      "negative": [
+        "179",
+        1
+      ],
+      "latent_image": [
+        "176",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "182": {
+    "inputs": {
+      "seed": 44444444,
+      "steps": 4,
+      "cfg": 2,
+      "sampler_name": "lcm",
+      "scheduler": "normal",
+      "denoise": 1,
+      "model": [
+        "180",
+        0
+      ],
+      "positive": [
+        "179",
+        0
+      ],
+      "negative": [
+        "179",
+        1
+      ],
+      "latent_image": [
+        "183",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "K采样器"
+    }
+  },
+  "183": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 1.5,
+      "samples": [
+        "181",
+        0
+      ]
+    },
+    "class_type": "LatentUpscaleBy",
+    "_meta": {
+      "title": "缩放Latent（比例）"
+    }
+  },
+  "184": {
+    "inputs": {
+      "ckpt_name": "nostalgiaClear_nostalgiaClear.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Checkpoint加载器（简易）"
+    }
+  },
+  "185": {
+    "inputs": {
+      "lora_name": "AnimateLCM_sd15_t2v_lora.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "184",
+        0
+      ],
+      "clip": [
+        "184",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "加载LoRA"
+    }
+  },
+  "186": {
+    "inputs": {
+      "frame_rate": 8,
+      "loop_count": 0,
+      "filename_prefix": "aaa_readme_cn",
+      "format": "image/gif",
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "187",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "187": {
+    "inputs": {
+      "samples": [
+        "182",
+        0
+      ],
+      "vae": [
+        "167",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE解码"
+    }
+  },
+  "188": {
+    "inputs": {
+      "fps": 8,
+      "images": [
+        "187",
+        0
+      ]
+    },
+    "class_type": "CreateVideo",
+    "_meta": {
+      "title": "创建视频"
+    }
+  },
+  "189": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "mp4",
+      "codec": "h264",
+      "video-preview": "",
+      "video": [
+        "188",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "保存视频"
+    }
+  },
+  "192": {
+    "inputs": {
+      "text": "(masterpiece, best quality, ultra-detailed, cinematic lighting), medium shot, low angle, side view of a beautiful girl with long blonde hair, sleeping peacefully. She lies on a bed of glowing moss in an enchanted forest at twilight. Her expression is serene with a faint smile. The background is a dense, mystical forest with bioluminescent mushrooms, floating dust motes, and fireflies creating a soft glow. Ethereal and dreamlike atmosphere, soft focus, volumetric light filtering through the trees.",
+      "clip": [
+        "178",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP文本编码"
+    }
+  },
+  "194": {
+    "inputs": {
+      "select_every_nth": 4,
+      "skip_first_images": 0,
+      "images": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "VHS_SelectEveryNthImage",
+    "_meta": {
+      "title": "Select Every Nth Image 🎥🅥🅗🅢"
+    }
+  }
+}

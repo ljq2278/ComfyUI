@@ -1,8 +1,8 @@
 {
   "id": "a3bc32be-4187-40fc-9b20-3e0520dd1d00",
   "revision": 0,
-  "last_node_id": 51,
-  "last_link_id": 78,
+  "last_node_id": 53,
+  "last_link_id": 81,
   "nodes": [
     {
       "id": 37,
@@ -289,7 +289,7 @@
         246
       ],
       "flags": {},
-      "order": 13,
+      "order": 14,
       "mode": 0,
       "inputs": [
         {
@@ -416,7 +416,7 @@
         82
       ],
       "flags": {},
-      "order": 9,
+      "order": 10,
       "mode": 0,
       "inputs": [
         {
@@ -501,7 +501,7 @@
         206
       ],
       "flags": {},
-      "order": 11,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
@@ -585,7 +585,7 @@
         106
       ],
       "flags": {},
-      "order": 14,
+      "order": 15,
       "mode": 0,
       "inputs": [
         {
@@ -646,7 +646,7 @@
         314.540283203125
       ],
       "flags": {},
-      "order": 10,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
@@ -745,81 +745,6 @@
       ],
       "color": "#232",
       "bgcolor": "#353"
-    },
-    {
-      "id": 34,
-      "type": "VHS_VideoCombine",
-      "pos": [
-        1693.5880126953125,
-        148.2185516357422
-      ],
-      "size": [
-        315,
-        400.59259033203125
-      ],
-      "flags": {},
-      "order": 25,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "images",
-          "type": "IMAGE",
-          "link": 49
-        },
-        {
-          "name": "audio",
-          "shape": 7,
-          "type": "AUDIO",
-          "link": null
-        },
-        {
-          "name": "meta_batch",
-          "shape": 7,
-          "type": "VHS_BatchManager",
-          "link": null
-        },
-        {
-          "name": "vae",
-          "shape": 7,
-          "type": "VAE",
-          "link": null
-        }
-      ],
-      "outputs": [
-        {
-          "name": "Filenames",
-          "type": "VHS_FILENAMES",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-videohelpersuite",
-        "ver": "1.6.1",
-        "Node name for S&R": "VHS_VideoCombine"
-      },
-      "widgets_values": {
-        "frame_rate": 8,
-        "loop_count": 0,
-        "filename_prefix": "aaa_readme_cn",
-        "format": "image/gif",
-        "pingpong": false,
-        "save_output": true,
-        "videopreview": {
-          "hidden": false,
-          "paused": false,
-          "params": {
-            "filename": "aaa_readme_cn_00046.gif",
-            "subfolder": "",
-            "type": "output",
-            "format": "image/gif",
-            "frame_rate": 8,
-            "workflow": "aaa_readme_cn_00046.png",
-            "fullpath": "F:\\projects\\ComfyUI\\output\\aaa_readme_cn_00046.gif"
-          }
-        }
-      },
-      "color": "#223",
-      "bgcolor": "#335"
     },
     {
       "id": 24,
@@ -989,49 +914,6 @@
       "bgcolor": "#653"
     },
     {
-      "id": 10,
-      "type": "VAEDecode",
-      "pos": [
-        2226.03466796875,
-        11.968745231628418
-      ],
-      "size": [
-        210,
-        46
-      ],
-      "flags": {},
-      "order": 24,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "samples",
-          "type": "LATENT",
-          "link": 71
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 10
-        }
-      ],
-      "outputs": [
-        {
-          "name": "IMAGE",
-          "type": "IMAGE",
-          "slot_index": 0,
-          "links": [
-            49
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "VAEDecode"
-      },
-      "widgets_values": []
-    },
-    {
       "id": 7,
       "type": "KSampler",
       "pos": [
@@ -1194,6 +1076,356 @@
       ]
     },
     {
+      "id": 30,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -378.8422546386719,
+        34.90049743652344
+      ],
+      "size": [
+        315,
+        98
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "slot_index": 0,
+          "links": [
+            75
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "slot_index": 1,
+          "links": [
+            77
+          ]
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "nostalgiaClear_nostalgiaClear.safetensors"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "LoraLoader",
+      "pos": [
+        246.30319213867188,
+        -108.97403717041016
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 76
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 78
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            68
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            66
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "AnimateLCM_sd15_t2v_lora.safetensors",
+        1,
+        1
+      ]
+    },
+    {
+      "id": 34,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        1627.016357421875,
+        204.92733764648438
+      ],
+      "size": [
+        315,
+        400.59259033203125
+      ],
+      "flags": {},
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 81
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        },
+        {
+          "name": "meta_batch",
+          "shape": 7,
+          "type": "VHS_BatchManager",
+          "link": null
+        },
+        {
+          "name": "vae",
+          "shape": 7,
+          "type": "VAE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-videohelpersuite",
+        "ver": "1.6.1",
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 8,
+        "loop_count": 0,
+        "filename_prefix": "aaa_readme_cn",
+        "format": "image/gif",
+        "pingpong": false,
+        "save_output": false,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "aaa_readme_cn_00046.gif",
+            "subfolder": "",
+            "type": "output",
+            "format": "image/gif",
+            "frame_rate": 8,
+            "workflow": "aaa_readme_cn_00046.png",
+            "fullpath": "F:\\projects\\ComfyUI\\output\\aaa_readme_cn_00046.gif"
+          }
+        }
+      },
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 10,
+      "type": "VAEDecode",
+      "pos": [
+        2226.03466796875,
+        11.968745231628418
+      ],
+      "size": [
+        210,
+        46
+      ],
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 71
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 10
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "slot_index": 0,
+          "links": [
+            80,
+            81
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 52,
+      "type": "CreateVideo",
+      "pos": [
+        2002.4388427734375,
+        263.21124267578125
+      ],
+      "size": [
+        270,
+        78
+      ],
+      "flags": {},
+      "order": 25,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 80
+        },
+        {
+          "name": "audio",
+          "shape": 7,
+          "type": "AUDIO",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            79
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        8
+      ]
+    },
+    {
+      "id": 53,
+      "type": "SaveVideo",
+      "pos": [
+        2036.957763671875,
+        423.0641784667969
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 79
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "video/ComfyUI",
+        "mp4",
+        "h264"
+      ]
+    },
+    {
+      "id": 51,
+      "type": "LoraLoader",
+      "pos": [
+        -40.59326171875,
+        -72.26602172851562
+      ],
+      "size": [
+        270,
+        126
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 75
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 77
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            76
+          ]
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            78
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.35",
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "water_color_sd15\\IrisCompietStyle.safetensors",
+        1,
+        1
+      ]
+    },
+    {
       "id": 42,
       "type": "VHS_LoadVideo",
       "pos": [
@@ -1202,10 +1434,10 @@
       ],
       "size": [
         253.279296875,
-        440.6396484375
+        455.15704345703125
       ],
       "flags": {},
-      "order": 6,
+      "order": 7,
       "mode": 0,
       "inputs": [
         {
@@ -1258,8 +1490,8 @@
       "widgets_values": {
         "video": "school_00003.mp4",
         "force_rate": 0,
-        "custom_width": 720,
-        "custom_height": 360,
+        "custom_width": 768,
+        "custom_height": 432,
         "frame_load_cap": 0,
         "skip_first_frames": 0,
         "select_every_nth": 4,
@@ -1273,167 +1505,14 @@
             "type": "input",
             "format": "video/mp4",
             "force_rate": 0,
-            "custom_width": 720,
-            "custom_height": 360,
+            "custom_width": 768,
+            "custom_height": 432,
             "frame_load_cap": 0,
             "skip_first_frames": 0,
             "select_every_nth": 4
           }
         }
       }
-    },
-    {
-      "id": 30,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -378.8422546386719,
-        34.90049743652344
-      ],
-      "size": [
-        315,
-        98
-      ],
-      "flags": {},
-      "order": 7,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "slot_index": 0,
-          "links": [
-            75
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "slot_index": 1,
-          "links": [
-            77
-          ]
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "nostalgiaClear_nostalgiaClear.safetensors"
-      ]
-    },
-    {
-      "id": 48,
-      "type": "LoraLoader",
-      "pos": [
-        246.30319213867188,
-        -108.97403717041016
-      ],
-      "size": [
-        270,
-        126
-      ],
-      "flags": {},
-      "order": 15,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 76
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 78
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            68
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            66
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "LoraLoader"
-      },
-      "widgets_values": [
-        "AnimateLCM_sd15_t2v_lora.safetensors",
-        1,
-        1
-      ]
-    },
-    {
-      "id": 51,
-      "type": "LoraLoader",
-      "pos": [
-        -40.59326171875,
-        -72.26602172851562
-      ],
-      "size": [
-        270,
-        126
-      ],
-      "flags": {},
-      "order": 12,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 75
-        },
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 77
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            76
-          ]
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            78
-          ]
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.35",
-        "Node name for S&R": "LoraLoader"
-      },
-      "widgets_values": [
-        "water_color_sd15\\IrisCompietStyle.safetensors",
-        1,
-        1
-      ]
     }
   ],
   "links": [
@@ -1524,14 +1603,6 @@
       20,
       1,
       "TIMESTEP_KEYFRAME"
-    ],
-    [
-      49,
-      10,
-      0,
-      34,
-      0,
-      "IMAGE"
     ],
     [
       53,
@@ -1716,6 +1787,30 @@
       48,
       1,
       "CLIP"
+    ],
+    [
+      79,
+      52,
+      0,
+      53,
+      0,
+      "VIDEO"
+    ],
+    [
+      80,
+      10,
+      0,
+      52,
+      0,
+      "IMAGE"
+    ],
+    [
+      81,
+      10,
+      0,
+      34,
+      0,
+      "IMAGE"
     ]
   ],
   "groups": [
@@ -1749,10 +1844,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 1.30638491072361,
+      "scale": 0.8111622471910207,
       "offset": [
-        -1182.5976320541417,
-        167.84330145301686
+        -707.7435405243733,
+        -14.261239936490881
       ]
     },
     "frontendVersion": "1.20.4",

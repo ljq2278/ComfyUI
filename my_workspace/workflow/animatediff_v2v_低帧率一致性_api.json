@@ -60,12 +60,12 @@
         0
       ],
       "positive": [
-        "3",
+        "24",
         0
       ],
       "negative": [
-        "6",
-        0
+        "24",
+        1
       ],
       "latent_image": [
         "9",
@@ -138,6 +138,33 @@
     "class_type": "ControlNetLoaderAdvanced",
     "_meta": {
       "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
+    }
+  },
+  "24": {
+    "inputs": {
+      "strength": 1,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "3",
+        0
+      ],
+      "negative": [
+        "6",
+        0
+      ],
+      "control_net": [
+        "20",
+        0
+      ],
+      "image": [
+        "18",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "应用ControlNet（旧版高级）"
     }
   },
   "27": {
@@ -311,12 +338,12 @@
         0
       ],
       "positive": [
-        "3",
+        "24",
         0
       ],
       "negative": [
-        "6",
-        0
+        "24",
+        1
       ],
       "latent_image": [
         "50",

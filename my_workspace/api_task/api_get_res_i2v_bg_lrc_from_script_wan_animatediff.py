@@ -54,7 +54,7 @@ llm_cli = OpenaiClient(
 exp_nm = "Dreaming_Deep"
 topic = "围绕沉浸式梦境与深海意象。整体氛围宁静、神秘且略带忧郁，表达了一种在深海中沉睡、漂流，与寂静对话的体验。"
 
-process_time = 0 
+process_time = 80 if is_server_windows else 200
 
 bg_shots_all = json.load(
     open(f"{LRC_BASE_DIR}/{exp_nm}.json", "r", encoding="utf-8"))
@@ -64,7 +64,7 @@ for itm in bg_shots_all:
         if sub:
             mv_shots.append(sub)
 # WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
-WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
+WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/wan生视频后animatediff风格化_api.json"  # 你的工作流API格式文件
 OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/material/bg_shot" if is_server_windows else "/workspace/ComfyUI/output/material/bg_shot"
 
 def queue_prompt(prompt_workflow):
@@ -84,16 +84,16 @@ def queue_prompt(prompt_workflow):
 
 def set_workflow(current_workflow, **kwargs):
 
-    save_video_node_id = "34"  # 替换为实际的节点ID
+    save_video_node_id = "189"  # 替换为实际的节点ID
     current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = kwargs["output_filename_prefix"]
 
-    posi_prompt_node_id = "3"  # 替换为实际的节点ID
-    current_workflow[posi_prompt_node_id]["inputs"]["text"] = kwargs["prompt"]
+    # posi_prompt_node_id = "3"  # 替换为实际的节点ID
+    for posi_prompt_node_id in ["105", "192"]:
+        current_workflow[posi_prompt_node_id]["inputs"]["text"] = kwargs["prompt"]
 
     # k_sampler_node_id = "108"  # 替换为实际的节点ID
-    for k_sampler_node_id in ["7", "49"]:
-        current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(
-            random.random()*10000000000)
+    for k_sampler_node_id in ["108", "181", "182"]:
+        current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(random.random()*10000000000)
 
     return current_workflow
 
