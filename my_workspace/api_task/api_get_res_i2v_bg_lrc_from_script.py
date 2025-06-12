@@ -15,7 +15,7 @@ def is_windows():
         return False
 
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
-COMFYUI_URL = "http://127.0.0.1:8188" if is_windows() else "http://127.0.0.1:8190"
+COMFYUI_URL = "http://2962e6ef.r29.cpolar.top/"
 LRC_BASE_DIR = "f:/projects/auto_video/mv/data" if is_windows() else "/workspace/auto_video/mv/data"
 
 import os
@@ -52,7 +52,7 @@ llm_cli = OpenaiClient(
 exp_nm = "Dreaming_Deep"
 topic = "围绕沉浸式梦境与深海意象。整体氛围宁静、神秘且略带忧郁，表达了一种在深海中沉睡、漂流，与寂静对话的体验。"
 
-process_time = 120 if is_windows() else 180
+process_time = 0 
 
 bg_shots_all = json.load(
     open(f"{LRC_BASE_DIR}/{exp_nm}.json", "r", encoding="utf-8"))
@@ -61,9 +61,9 @@ for itm in bg_shots_all:
     for sub in itm["lyric"].split("\t"):
         if sub:
             mv_shots.append(sub)
-WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/空参考生视频_api.json"  # 你的工作流API格式文件
-OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/material/bg_shot"
-
+WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
+# OUTPUT_VIDEO_DIR = COMFYUI_PATH+"/output/material/bg_shot"
+OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/material/bg_shot"
 
 def queue_prompt(prompt_workflow):
     p = {"prompt": prompt_workflow}
@@ -82,15 +82,16 @@ def queue_prompt(prompt_workflow):
 
 def set_workflow(current_workflow, **kwargs):
 
-    save_video_node_id = "69"  # 替换为实际的节点ID
+    save_video_node_id = "34"  # 替换为实际的节点ID
     current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = kwargs["output_filename_prefix"]
 
-    posi_prompt_node_id = "105"  # 替换为实际的节点ID
+    posi_prompt_node_id = "3"  # 替换为实际的节点ID
     current_workflow[posi_prompt_node_id]["inputs"]["text"] = kwargs["prompt"]
 
-    k_sampler_node_id = "108"  # 替换为实际的节点ID
-    current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(
-        random.random()*10000000000)
+    # k_sampler_node_id = "108"  # 替换为实际的节点ID
+    for k_sampler_node_id in ["7", "49"]:
+        current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(
+            random.random()*10000000000)
 
     return current_workflow
 
@@ -109,12 +110,12 @@ async def main():
             try:
 
                 prompt_dct = {
-                    "风格": "现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。",
+                    # "风格": "现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。",
                     #无效 "风格": "现代高清的水彩画风格，柔和、清澈、明亮的手绘质感，色彩自然流畅，晕染效果细腻且有层次，避免过度浓重或失去透明感，整体呈现温暖、通透且富有情感的画面表达。"
                 }
 
                 prompt_dct.update({"歌词": lyric})
-                prompt_prompt = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加画面内容描述，如果内容中有人物，给出人物表情描述；如果内容中没有人物，请给出画面焦点事物。150字左右。下面开始："""
+                prompt_prompt = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意要有更多的细节（其中主角是一个黄发蓝眼女孩），注重氛围的表达。以sd1.5的英文prompt的形式输出该画面描述(比如: "masterpiece, (1girl:1.2), young woman with nostalgic expression, wandering alone on a dimly lit urban street, old neon signs flickering in the background, soft warm glow from vintage street lamps, autumn leaves gently drifting in the air, light rain making the pavement shimmer, distant silhouettes of people lost in thought, sepia-toned atmosphere, melancholic yet hopeful gaze, slightly messy hair caught in the breeze, wearing a worn-out trench coat, subtle film grain effect, cinematic composition, atmospheric perspective")，不要有其他多余的输出"""
                 think = ""
                 text = ""
                 async for delta in llm_cli.async_stream_chat(chat_content="", history=[], prompt=prompt_prompt, max_length=256 * 16, temperature=0.4, enable_thinking=True):
@@ -132,7 +133,7 @@ async def main():
                 file_name_prefix = f"""{exp_nm}_歌词#{prompt_dct["歌词"]}"""
                 kwargs = {
                     "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"{file_name_prefix}"),
-                    "prompt": f"{prompt_dct}"
+                    "prompt": f"""{prompt_dct["画面内容"]}"""
                 }
                 current_workflow = set_workflow(current_workflow, **kwargs)
 
