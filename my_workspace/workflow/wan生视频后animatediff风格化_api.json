@@ -10,7 +10,7 @@
   },
   "105": {
     "inputs": {
-      "text": "(masterpiece, best quality, ultra-detailed, cinematic lighting), medium shot, low angle, side view of a beautiful girl with long blonde hair, sleeping peacefully. She lies on a bed of glowing moss in an enchanted forest at twilight. Her expression is serene with a faint smile. The background is a dense, mystical forest with bioluminescent mushrooms, floating dust motes, and fireflies creating a soft glow. Ethereal and dreamlike atmosphere, soft focus, volumetric light filtering through the trees.",
+      "text": "anime style, (cinematic atmosphere, ethereal lighting, ultra-detailed), close-up shot of a young woman with cascading golden-blonde mermaid-style hair and piercing sapphire-blue eyes, her face turned slightly sideways with dewdrops clinging to her lashes, lips parted mid-breath as if hearing a whisper, wearing a translucent aquamarine gown with iridescent scales, standing ankle-deep in a glassy black lake under starless indigo sky, distant floating islands with inverted waterfalls glowing neon-blue, aurora borealis ribbons swirling above, her left hand raised to touch a holographic lotus bloom materializing from thin air, 360-degree rotating camera movement revealing concentric rings of ancient stone pillars submerged underwater, low-angle perspective emphasizing her silhouette against bioluminescent plankton swirls, slow-motion capture of hair strands floating weightlessly, dreamy bokeh effect blending liquid mercury-like lake surface with celestial nebula reflections, melancholic yet curious expression with subtle tear streaks, macro lens focusing on eye's reflection showing miniature constellations, crane shot ascending to reveal her tiny figure against vast cosmic backdrop, hyper-realistic particle effects of stardust and prismatic light flares.",
       "clip": [
         "115",
         1
@@ -36,8 +36,8 @@
   },
   "108": {
     "inputs": {
-      "seed": 327802021166629,
-      "steps": 4,
+      "seed": 704610689872577,
+      "steps": 2,
       "cfg": 1,
       "sampler_name": "uni_pc",
       "scheduler": "simple",
@@ -258,7 +258,7 @@
   },
   "169": {
     "inputs": {
-      "text": "(worst quality, low quality: 1.4)",
+      "text": "embedding:sd1.5\\negative_hand-neg, worst quality, low quality, jpeg artifacts, blurry, deformed, distorted, mutated, disfigured, malformed, extra limbs, extra fingers, missing fingers, fused fingers, bad anatomy, bad proportions, unnatural body, unrealistic face, asymmetrical eyes, poorly drawn hands, poorly drawn face, mutated hands, mutated face, long neck, long torso, extra arms, extra legs, extra heads, text, watermark, signature, cropped, out of frame, low resolution, overexposed, underexposed, noisy background, cluttered background, unnatural lighting, excessive contrast, oversaturated colors, unrealistic shadows, bad perspective, bad composition\n",
       "clip": [
         "178",
         0
@@ -331,18 +331,6 @@
     "class_type": "EmptyLatentImage",
     "_meta": {
       "title": "空Latent图像"
-    }
-  },
-  "177": {
-    "inputs": {
-      "images": [
-        "194",
-        0
-      ]
-    },
-    "class_type": "PreviewImage",
-    "_meta": {
-      "title": "预览图像"
     }
   },
   "178": {
@@ -470,7 +458,7 @@
   "183": {
     "inputs": {
       "upscale_method": "nearest-exact",
-      "scale_by": 1.5,
+      "scale_by": 1.5000000000000002,
       "samples": [
         "181",
         0
@@ -511,7 +499,7 @@
   },
   "186": {
     "inputs": {
-      "frame_rate": 8,
+      "frame_rate": 3,
       "loop_count": 0,
       "filename_prefix": "aaa_readme_cn",
       "format": "image/gif",
@@ -545,7 +533,7 @@
   },
   "188": {
     "inputs": {
-      "fps": 4,
+      "fps": 3,
       "images": [
         "187",
         0
@@ -574,7 +562,7 @@
   },
   "192": {
     "inputs": {
-      "text": "(masterpiece, best quality, ultra-detailed, cinematic lighting), medium shot, low angle, side view of a beautiful girl with long blonde hair, sleeping peacefully. She lies on a bed of glowing moss in an enchanted forest at twilight. Her expression is serene with a faint smile. The background is a dense, mystical forest with bioluminescent mushrooms, floating dust motes, and fireflies creating a soft glow. Ethereal and dreamlike atmosphere, soft focus, volumetric light filtering through the trees.",
+      "text": "(cinematic atmosphere, ethereal lighting, ultra-detailed), close-up shot of a young woman with cascading golden-blonde mermaid-style hair and piercing sapphire-blue eyes, her face turned slightly sideways with dewdrops clinging to her lashes, lips parted mid-breath as if hearing a whisper, wearing a translucent aquamarine gown with iridescent scales, standing ankle-deep in a glassy black lake under starless indigo sky, distant floating islands with inverted waterfalls glowing neon-blue, aurora borealis ribbons swirling above, her left hand raised to touch a holographic lotus bloom materializing from thin air, 360-degree rotating camera movement revealing concentric rings of ancient stone pillars submerged underwater, low-angle perspective emphasizing her silhouette against bioluminescent plankton swirls, slow-motion capture of hair strands floating weightlessly, dreamy bokeh effect blending liquid mercury-like lake surface with celestial nebula reflections, melancholic yet curious expression with subtle tear streaks, macro lens focusing on eye's reflection showing miniature constellations, crane shot ascending to reveal her tiny figure against vast cosmic backdrop, hyper-realistic particle effects of stardust and prismatic light flares.",
       "clip": [
         "178",
         0
@@ -587,7 +575,7 @@
   },
   "194": {
     "inputs": {
-      "select_every_nth": 4,
+      "select_every_nth": 5,
       "skip_first_images": 0,
       "images": [
         "119",
@@ -597,6 +585,24 @@
     "class_type": "VHS_SelectEveryNthImage",
     "_meta": {
       "title": "Select Every Nth Image 🎥🅥🅗🅢"
+    }
+  },
+  "271": {
+    "inputs": {
+      "frame_rate": 3,
+      "loop_count": 0,
+      "filename_prefix": "aaa_readme_cn",
+      "format": "image/gif",
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "194",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
     }
   }
 }
