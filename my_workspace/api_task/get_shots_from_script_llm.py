@@ -173,8 +173,6 @@ import time
 import requests
 import httpx
 import json
-from my_workspace.shot.bg_shot.camera import camera_motion_prompts
-from my_workspace.restful_api import OpenaiClient
 
 logging.basicConfig(filename="log.out", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
 os.environ['http_proxy'] = ''
@@ -190,14 +188,6 @@ def is_windows():
     else:
         logging.info(f"当前操作系统为 {os_name}")
         return False
-httpx_client = httpx.AsyncClient(limits=httpx.Limits(max_connections=1024, max_keepalive_connections=1024))
-llm_cli = OpenaiClient(
-    engine="qwen-plus-latest",
-    api_key="sk-e3392a85198840f1b201495b34182350",
-    # deepseek_api_key="sk-e3392a85198840f1b201495b34182350" if "172.17.209.45" in ips else "sk-813a748ccc884dcb879b00bd03b1520f",
-    url="https://dashscope.aliyuncs.com/compatible-mode/v1",
-    http_client=httpx_client,
-)
 
 ########################################################## meta param ##########################################################
 IS_SERVER_WINDOWS = True
@@ -217,6 +207,17 @@ if "PYTHONPATH" in os.environ:
 else:
     os.environ["PYTHONPATH"] = f"{COMFYUI_PATH}"
 sys.path.insert(0, COMFYUI_PATH)  
+
+from my_workspace.shot.bg_shot.camera import camera_motion_prompts
+from my_workspace.restful_api import OpenaiClient
+httpx_client = httpx.AsyncClient(limits=httpx.Limits(max_connections=1024, max_keepalive_connections=1024))
+llm_cli = OpenaiClient(
+    engine="qwen-plus-latest",
+    api_key="sk-e3392a85198840f1b201495b34182350",
+    # deepseek_api_key="sk-e3392a85198840f1b201495b34182350" if "172.17.209.45" in ips else "sk-813a748ccc884dcb879b00bd03b1520f",
+    url="https://dashscope.aliyuncs.com/compatible-mode/v1",
+    http_client=httpx_client,
+)
 
 bg_shots_all = json.load(open(f"{LRC_BASE_DIR}/{EXP_NM}.json", "r", encoding="utf-8"))
 mv_shots = []
@@ -269,8 +270,10 @@ async def main():
     cont = 0
     for it_cnt in range(0, iter_tt):
         random.shuffle(mv_shots)
-        for i, segment in enumerate(re.split(r"镜头\s.*\n", example_shot_str)):
-        # for lyric in mv_shots:
+        for i, seg in enumerate(re.split(r"镜头\s.*\n", example_shot_str)):
+            # for lyric in mv_shots:
+            if seg.strip() == "":
+                continue
             try:
                 prompt_dct = {
                     # "风格": "现代高清的吉卜力动画风格，细腻、干净、明亮的手绘风格，线条清晰，色彩鲜明自然，避免过度泛黄或昏暗，整体呈现温柔、通透且富有情感的动画质感。",
@@ -302,7 +305,7 @@ async def main():
                 current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
 
                 file_name_prefix = f"""{EXP_NM}_歌词#{prompt_dct["歌词"]}"""
-                prompt_cur = " ".join([type_str,charactor_str, segment])
+                prompt_cur = ", ".join([type_str,charactor_str, seg])
                 print(prompt_cur)
                 kwargs = {
                     "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"{file_name_prefix}"),
