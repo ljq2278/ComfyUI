@@ -270,8 +270,9 @@ async def main():
     cont = 0
     for it_cnt in range(0, iter_tt):
         random.shuffle(mv_shots)
+        # for lyric in mv_shots:
         for i, seg in enumerate(re.split(r"镜头\s.*\n", example_shot_str)):
-            # for lyric in mv_shots:
+            # if i < 2:
             if seg.strip() == "":
                 continue
             try:
@@ -305,7 +306,7 @@ async def main():
                 current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
 
                 file_name_prefix = f"""{EXP_NM}_歌词#{prompt_dct["歌词"]}"""
-                prompt_cur = ", ".join([type_str,charactor_str, seg])
+                prompt_cur = ", ".join([type_str,charactor_str, seg]) if "星耀" in seg else ", ".join([type_str, seg])
                 print(prompt_cur)
                 kwargs = {
                     "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"{file_name_prefix}"),
