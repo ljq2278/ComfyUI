@@ -1,7 +1,20 @@
 import logging
-logging.basicConfig(filename="log.out", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
-
+import os
+import sys
 import platform
+import asyncio
+import traceback
+import random
+import time
+import requests
+import httpx
+import json
+from my_workspace.shot.bg_shot.camera import camera_motion_prompts
+from my_workspace.restful_api import OpenaiClient
+
+logging.basicConfig(filename="log.out", level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+os.environ['http_proxy'] = ''
+os.environ['https_proxy'] = ''
 def is_windows():
     os_name = platform.system()
     if os_name.lower() == 'windows':
@@ -13,35 +26,6 @@ def is_windows():
     else:
         logging.info(f"当前操作系统为 {os_name}")
         return False
-
-is_server_windows = True
-
-COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
-COMFYUI_URL = "http://2903a9fa.r29.cpolar.top/" if is_server_windows else "http://127.0.0.1:8190"
-LRC_BASE_DIR = "f:/projects/auto_video/mv/data" if is_windows() else "/workspace/auto_video/mv/data"
-
-import os
-import sys
-os.environ['http_proxy'] = ''
-os.environ['https_proxy'] = ''
-if "PYTHONPATH" in os.environ:
-    os.environ["PYTHONPATH"] += f":{COMFYUI_PATH}"
-else:
-    os.environ["PYTHONPATH"] = f"{COMFYUI_PATH}"
-sys.path.insert(0, COMFYUI_PATH)  
-
-import asyncio
-import traceback
-import random
-import time
-import requests
-import httpx
-import json
-from my_workspace.shot.bg_shot.camera import camera_motion_prompts
-from my_workspace.restful_api import OpenaiClient
-
-# from my_workspace.shot.bg_shot.content import bg_shots_all
-
 httpx_client = httpx.AsyncClient(limits=httpx.Limits(max_connections=1024, max_keepalive_connections=1024))
 llm_cli = OpenaiClient(
     engine="qwen-plus-latest",
@@ -51,21 +35,31 @@ llm_cli = OpenaiClient(
     http_client=httpx_client,
 )
 
-exp_nm = "Dreaming_Deep"
-topic = "围绕沉浸式梦境与深海意象。整体氛围宁静、神秘且略带忧郁，表达了一种在深海中沉睡、漂流，与寂静对话的体验。"
+########################################################## meta param ##########################################################
+IS_SERVER_WINDOWS = True
+COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
+COMFYUI_URL = "http://2903a9fa.r29.cpolar.top/" if IS_SERVER_WINDOWS else "http://127.0.0.1:8190"
+LRC_BASE_DIR = "f:/projects/auto_video/mv/data" if is_windows() else "/workspace/auto_video/mv/data"
+EXP_NM = "Dreaming_Deep"
+TOPIC = "围绕沉浸式梦境与深海意象。整体氛围宁静、神秘且略带忧郁，表达了一种在深海中沉睡、漂流，与寂静对话的体验。"
+PROCESS_TIME = 80 if IS_SERVER_WINDOWS else 200
+# WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
+WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/wan生视频ghibli风格lora_api.json"  # 你的工作流API格式文件
+OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/material/bg_shot" if IS_SERVER_WINDOWS else "/workspace/ComfyUI/output/material/bg_shot"
+################################################################################################################################
 
-process_time = 80 if is_server_windows else 200
+if "PYTHONPATH" in os.environ:
+    os.environ["PYTHONPATH"] += f":{COMFYUI_PATH}"
+else:
+    os.environ["PYTHONPATH"] = f"{COMFYUI_PATH}"
+sys.path.insert(0, COMFYUI_PATH)  
 
-bg_shots_all = json.load(
-    open(f"{LRC_BASE_DIR}/{exp_nm}.json", "r", encoding="utf-8"))
+bg_shots_all = json.load(open(f"{LRC_BASE_DIR}/{EXP_NM}.json", "r", encoding="utf-8"))
 mv_shots = []
 for itm in bg_shots_all:
     for sub in itm["lyric"].split("\t"):
         if sub:
             mv_shots.append(sub)
-# WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/animatediff_t2v_低帧率一致性_api.json"  # 你的工作流API格式文件
-WORKFLOW_API_JSON_FILE = COMFYUI_PATH + "/my_workspace/workflow/wan生视频后animatediff风格化_api.json"  # 你的工作流API格式文件
-OUTPUT_VIDEO_DIR = "f:/projects/ComfyUI/output/material/bg_shot" if is_server_windows else "/workspace/ComfyUI/output/material/bg_shot"
 
 def queue_prompt(prompt_workflow):
     p = {"prompt": prompt_workflow}
@@ -84,15 +78,16 @@ def queue_prompt(prompt_workflow):
 
 def set_workflow(current_workflow, **kwargs):
 
-    save_video_node_id = "189"  # 替换为实际的节点ID
-    current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = kwargs["output_filename_prefix"]
+    save_video_node_ids = [k for k,v in current_workflow.items() if v.get("class_type") == "SaveVideo"]
+    for save_video_node_id in save_video_node_ids:
+        current_workflow[save_video_node_id]["inputs"]["filename_prefix"] = kwargs["output_filename_prefix"]
 
-    # posi_prompt_node_id = "3"  # 替换为实际的节点ID
-    for posi_prompt_node_id in ["105", "192"]:
+    posi_prompt_node_ids = [k for k,v in current_workflow.items() if v.get("class_type") == "CLIPTextEncode" and "Positive" in  v.get("_meta",{}).get("title", "")]
+    for posi_prompt_node_id in posi_prompt_node_ids:
         current_workflow[posi_prompt_node_id]["inputs"]["text"] = kwargs["prompt"]
 
-    # k_sampler_node_id = "108"  # 替换为实际的节点ID
-    for k_sampler_node_id in ["108", "181", "182"]:
+    k_sampler_node_ids = [k for k,v in current_workflow.items() if v.get("class_type") == "KSampler"]
+    for k_sampler_node_id in k_sampler_node_ids:
         current_workflow[k_sampler_node_id]["inputs"]["seed"] = int(random.random()*10000000000)
 
     return current_workflow
@@ -117,29 +112,29 @@ async def main():
                 }
 
                 prompt_dct.update({"歌词": lyric})
-                prompt_prompt_role = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意多使用现实生活中的场景和动作，背景要真实。要有更多的细节：其中1、主角是一个黄色长发蓝眼女孩；2、要给出背景景物细节；3、人物范围要给出是脸部特写，还是半身，还是全身，还是远景；人物是侧身，还是正面，还是背面；4、给出人物表情和动作；5、给出运镜与摄像角度方式；6、注重氛围的表达。以sd1.5的英文prompt（词语，词组）的形式输出该画面描述，不要有其他多余的输出"""
+                prompt_prompt_role = f"""请为下面名为'{EXP_NM}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意多使用现实生活中的场景和动作，背景要真实。要有更多的细节：其中1、主角是一个黄色长发蓝眼女孩；2、要给出背景景物细节；3、人物范围要给出是脸部特写，还是半身，还是全身，还是远景；人物是侧身，还是正面，还是背面；4、给出人物表情和动作；5、给出运镜与摄像角度方式；6、注重氛围的表达。以sd1.5的英文prompt（词语，词组）的形式输出该画面描述，不要有其他多余的输出"""
                 prompt_prompt_role_example = f"""(masterpiece, best quality, high detail), cinematic still, medium shot of a beautiful girl with long flowing blonde hair and blue eyes, sleeping peacefully, serene expression with a slight smile, she is lying on a bed of glowing moss and luminescent flowers in an enchanted forest at night, her hair fanned out around her head, ancient trees with soft moonlight filtering through the canopy, god rays, crepuscular rays, fireflies and glowing dust motes floating in the air, soft mist on the ground, ethereal and magical atmosphere, dreamlike, fantasy, high angle view looking down, slow dolly out."""
-                prompt_prompt_bg = f"""请为下面名为'{exp_nm}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意多使用现实生活中的场景和动作，背景要真实。要有更多的细节：其中1、不要有单人物特写，但可以有两三个人或群像或风景街景等景观；2、要给出背景景物细节；3、给出运镜与摄像角度方式；4、注重氛围的表达。以sd1.5的英文prompt（词语，词组）的形式输出该画面描述，不要有其他多余的输出"""
+                prompt_prompt_bg = f"""请为下面名为'{EXP_NM}'的歌曲的歌词:\n'{lyric}'\n添加mv画面内容描述，注意多使用现实生活中的场景和动作，背景要真实。要有更多的细节：其中1、不要有单人物特写，但可以有两三个人或群像或风景街景等景观；2、要给出背景景物细节；3、给出运镜与摄像角度方式；4、注重氛围的表达。以sd1.5的英文prompt（词语，词组）的形式输出该画面描述，不要有其他多余的输出"""
                 prompt_prompt_bg_example = f"""(masterpiece, best quality, high detail), a serene urban night street, dimly lit by warm streetlights, a light drizzle falling, reflections of city lights on the wet pavement, a couple walking under a shared umbrella in the distance, blurred silhouettes of people passing by, soft bokeh effect in the background, faint neon signs glowing on the sides of buildings, gentle fog slightly obscuring the far end of the street, camera pans slowly from the wet ground upward to reveal the scene, handheld camera movement with a slight sway, capturing the melancholic yet peaceful ambiance of the night, cinematic lighting with soft shadows, realistic textures and details of the wet concrete and brick walls, immersive atmosphere conveying a dreamlike stillness mixed with gentle movement.  """
                 if random.random() < 0.7:
                     prompt_prompt = prompt_prompt_bg + "\n示例: "+prompt_prompt_bg_example
                 else:
                     prompt_prompt = prompt_prompt_role + "\n示例: "+prompt_prompt_role_example
                 think = ""
-                text = ""
+                text = "Studio Ghibli style, "
                 async for delta in llm_cli.async_stream_chat(chat_content="", history=[], prompt=prompt_prompt, max_length=256 * 16, temperature=0.4, enable_thinking=True):
                     # logging.info(f"process_message_async: delta: {delta}")
                     if "think" in delta:
                         think += delta["think"]
                     if "text" in delta:
                         text += delta["text"]
-                prompt_dct.update({"画面内容": "anime style, "+text})
+                prompt_dct.update({"画面内容": text})
                 camera_motion_id = int(random.random()*len(camera_motion_prompts))
                 prompt_dct["运镜"] = camera_motion_prompts[camera_motion_id]
 
                 current_workflow = json.loads(json.dumps(base_workflow))  # 深拷贝工作流
 
-                file_name_prefix = f"""{exp_nm}_歌词#{prompt_dct["歌词"]}"""
+                file_name_prefix = f"""{EXP_NM}_歌词#{prompt_dct["歌词"]}"""
                 kwargs = {
                     "output_filename_prefix": os.path.join(OUTPUT_VIDEO_DIR, f"{file_name_prefix}"),
                     "prompt": f"""{prompt_dct["画面内容"]}"""
@@ -156,7 +151,7 @@ async def main():
                 else:
                     logging.info(f"Failed to queue {kwargs}")
                 logging.info("-" * 30)
-                time.sleep(process_time)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
+                time.sleep(PROCESS_TIME)  # 等待一段时间，避免请求过于频繁，并给ComfyUI一点处理时间
             except Exception as e:
                 traceback.print_exc()
                 logging.info(f"except: {e}")
