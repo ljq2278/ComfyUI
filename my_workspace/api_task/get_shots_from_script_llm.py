@@ -17,7 +17,7 @@ def is_windows():
 is_server_windows = True
 
 COMFYUI_PATH = "f:/projects/ComfyUI" if is_windows() else "/workspace/ComfyUI"
-COMFYUI_URL = "http://2962e6ef.r29.cpolar.top/" if is_server_windows else "http://127.0.0.1:8190"
+COMFYUI_URL = "http://2903a9fa.r29.cpolar.top/" if is_server_windows else "http://127.0.0.1:8190"
 LRC_BASE_DIR = "f:/projects/auto_video/mv/data" if is_windows() else "/workspace/auto_video/mv/data"
 
 import os
